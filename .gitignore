@@ -1,0 +1,27 @@
+# Secrets — never commit real API keys
+secrets.properties
+.env
+
+# Maven
+target/
+!.mvn/wrapper/maven-wrapper.jar
+
+# IDE
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+
+# OS
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# Playwright / demo artifacts
+playwright-report/
+test-results/
+screenshots/actual/
+screenshots/diff/
+recordings/
+*.log
