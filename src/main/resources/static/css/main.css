@@ -1,0 +1,262 @@
+/* Shared by both /accessible and /inaccessible — only the markup in the
+   templates differs; every visual rule here applies to both variants
+   equally, targeting either the real semantic element or its div/span
+   look-alike so the two stay pixel-identical. */
+
+body {
+    font-family: system-ui, sans-serif;
+    max-width: 44rem;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    color: #1a1a1a;
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+}
+
+a, .register-link, .fake-link {
+    color: #0b5fff;
+    cursor: pointer;
+}
+
+/* Headings and their div look-alikes render identically */
+h1, .h1 { font-size: 1.8rem; font-weight: 700; margin: 0.7em 0 0.4em; }
+h2, .h2 { font-size: 1.3rem; font-weight: 700; margin: 0.6em 0 0.3em; }
+h3, .h3 { font-size: 1.1rem; font-weight: 700; margin: 0.5em 0 0.3em; }
+
+nav, .nav {
+    margin-bottom: 0.5rem;
+}
+
+/* Real <table> and the div-grid fake table render identically. Both use
+   the SAME explicit column proportions — table-layout:fixed for the real
+   table, matching grid-template-columns for the fake one — instead of
+   letting the browser auto-size one of them, which is what caused the
+   two to drift apart. */
+table, .table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+table {
+    table-layout: fixed;
+}
+
+.table {
+    display: grid;
+    grid-template-columns: 36% 18% 16% 5rem 1fr;
+}
+
+.table .row {
+    display: contents;
+}
+
+th, td, .table .cell {
+    text-align: left;
+    padding: 0.6rem 0.5rem;
+    border-bottom: 1px solid #ddd;
+}
+
+th:nth-child(1), td:nth-child(1) { width: 36%; }
+th:nth-child(2), td:nth-child(2) { width: 18%; }
+th:nth-child(3), td:nth-child(3) { width: 16%; }
+th:nth-child(4), td:nth-child(4) { width: 5rem; }
+
+.table .row.header-row .cell {
+    font-weight: 600;
+}
+
+.session-icon {
+    display: block;
+}
+
+.filter-form {
+    display: flex;
+    align-items: end;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.filter-form label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.filter-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* Icon-only "clear filter" control — identical whether it's a real
+   <button>/<a> or a bare <span> with a click handler */
+.icon-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.9rem;
+    height: 1.9rem;
+    border: none;
+    background: transparent;
+    font-size: 1.1rem;
+    line-height: 1;
+    cursor: pointer;
+    color: #555;
+}
+
+.icon-button:hover {
+    color: #1a1a1a;
+}
+
+.field {
+    margin-bottom: 1.25rem;
+}
+
+.field label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.field input[type="text"],
+.field input[type="email"] {
+    width: 100%;
+    max-width: 24rem;
+    padding: 0.5rem;
+    font-size: 1rem;
+    border: 1px solid #767676;
+    border-radius: 4px;
+}
+
+.field input.has-error {
+    border-color: #b3261e;
+}
+
+/* Real <select> and the fake-select trigger render identically */
+.field select,
+.fake-select-trigger {
+    width: 100%;
+    max-width: 24rem;
+    padding: 0.5rem;
+    font-size: 1rem;
+    border: 1px solid #767676;
+    border-radius: 4px;
+    background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%23555'%3E%3Cpath d='M5.5 7.5l4.5 5 4.5-5z'/%3E%3C/svg%3E") no-repeat right 0.5rem center;
+    background-size: 1.1rem;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+.fake-select {
+    position: relative;
+    max-width: 24rem;
+}
+
+.fake-select.has-error .fake-select-trigger {
+    border-color: #b3261e;
+}
+
+.fake-select-list {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    background: #fff;
+    border: 1px solid #767676;
+    border-radius: 4px;
+    margin-top: 2px;
+    max-height: 12rem;
+    overflow-y: auto;
+}
+
+.fake-select.open .fake-select-list {
+    display: block;
+}
+
+.fake-select-option {
+    padding: 0.5rem;
+    cursor: pointer;
+}
+
+.fake-select-option:hover {
+    background: #eef3ff;
+}
+
+.field-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.field-checkbox label {
+    margin-bottom: 0;
+    font-weight: normal;
+}
+
+/* border-color has no visible effect on a native checkbox widget in most
+   browsers, so its error state needs an outline instead */
+.field-checkbox input.has-error {
+    outline: 2px solid #b3261e;
+    outline-offset: 2px;
+}
+
+.field-error {
+    color: #b3261e;
+    font-weight: 600;
+    margin-top: 0.25rem;
+}
+
+.form-alert {
+    background: #fdecea;
+    border: 1px solid #b3261e;
+    color: #7a1c15;
+    padding: 0.75rem 1rem;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+}
+
+/* Real <button> and its div/span look-alikes render identically */
+button, .fake-button {
+    display: inline-block;
+    font-size: 1rem;
+    padding: 0.6rem 1.2rem;
+    border-radius: 4px;
+    border: 1px solid #0b5fff;
+    background: #0b5fff;
+    color: #fff;
+    cursor: pointer;
+}
+
+button:hover, .fake-button:hover {
+    background: #0847c4;
+}
+
+/* Accessible variant: visible focus ring on every interactive element */
+body.variant-accessible :where(a, button, input, select, [tabindex]):focus-visible {
+    outline: 3px solid #0b5fff;
+    outline-offset: 2px;
+}
+
+/* Broken variant: focus is present on the few elements still reachable,
+   but never visible — and the fake controls have no tabindex at all,
+   so they are simply unreachable by keyboard */
+body.variant-inaccessible :focus,
+body.variant-inaccessible :focus-visible {
+    outline: none;
+}
+
+.confirmation-code {
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+}

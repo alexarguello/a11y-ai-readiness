@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration confirmed</title>
+    <link rel="stylesheet" th:href="@{/css/main.css}">
+</head>
+<body class="variant-accessible">
+<header>
+    <nav aria-label="breadcrumb"><a th:href="@{/accessible}">&larr; Back to sessions</a></nav>
+</header>
+<main>
+    <h1>You're registered!</h1>
+    <p th:text="'Thanks, ' + ${attendeeName} + '. Your registration for ' + ${workshop.title()} + ' is confirmed.'">
+        Confirmation message
+    </p>
+    <p>Your confirmation code:</p>
+    <p class="confirmation-code" th:text="${confirmationCode}">JCON-000000</p>
+</main>
+</body>
+</html>

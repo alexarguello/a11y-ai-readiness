@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="'Register — ' + ${workshop.title()}">Register</title>
+    <link rel="stylesheet" th:href="@{/css/main.css}">
+</head>
+<body class="variant-accessible">
+<header>
+    <nav aria-label="breadcrumb"><a th:href="@{/accessible}">&larr; Back to sessions</a></nav>
+    <h1 th:text="'Register: ' + ${workshop.title()}">Register</h1>
+    <p th:text="${workshop.speaker()} + ' — ' + ${workshop.timeSlot()}">Speaker — Time</p>
+</header>
+<main>
+    <div role="alert" th:if="${#fields.hasErrors('registrationForm.*')}" class="form-alert">
+        There's a problem with your registration. Please fix the highlighted fields below.
+    </div>
+
+    <form th:action="@{/accessible/register/{id}(id=${workshop.id()})}" th:object="${registrationForm}" method="post">
+
+        <div class="field">
+            <label for="name">Full name</label>
+            <input type="text" id="name" th:field="*{name}"
+                   th:aria-describedby="${#fields.hasErrors('name')} ? 'name-error' : null">
+            <p id="name-error" class="field-error" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name error</p>
+        </div>
+
+        <div class="field">
+            <label for="email">Email address</label>
+            <input type="email" id="email" th:field="*{email}"
+                   th:aria-describedby="${#fields.hasErrors('email')} ? 'email-error' : null">
+            <p id="email-error" class="field-error" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email error</p>
+        </div>
+
+        <div class="field">
+            <label for="mealPreference">Meal preference</label>
+            <select id="mealPreference" th:field="*{mealPreference}"
+                    th:aria-describedby="${#fields.hasErrors('mealPreference')} ? 'meal-error' : null">
+                <option value="">Choose one&hellip;</option>
+                <option th:each="option : ${T(com.a11y.a11y_ai_readiness.registration.MealPreference).values()}"
+                        th:value="${option}" th:text="${option.label}">Meal option</option>
+            </select>
+            <p id="meal-error" class="field-error" th:if="${#fields.hasErrors('mealPreference')}" th:errors="*{mealPreference}">Meal error</p>
+        </div>
+
+        <div class="field field-checkbox">
+            <input type="checkbox" id="acceptTerms" th:field="*{acceptTerms}"
+                   th:aria-describedby="${#fields.hasErrors('acceptTerms')} ? 'terms-error' : null">
+            <label for="acceptTerms">I accept the workshop terms and conditions</label>
+            <p id="terms-error" class="field-error" th:if="${#fields.hasErrors('acceptTerms')}" th:errors="*{acceptTerms}">Terms error</p>
+        </div>
+
+        <button type="submit">Complete registration</button>
+    </form>
+</main>
+</body>
+</html>

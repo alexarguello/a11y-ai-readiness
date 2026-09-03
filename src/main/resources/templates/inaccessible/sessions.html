@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>JCON Workshops — inaccessible</title>
+    <link rel="stylesheet" th:href="@{/css/main.css}">
+    <script th:src="@{/js/fake-widgets.js}" defer></script>
+</head>
+<body class="variant-inaccessible">
+<div class="header">
+    <div class="h1">JCON Workshops</div>
+</div>
+<div class="main">
+    <div class="filter-bar">
+        <form th:action="@{/inaccessible}" method="get" class="filter-form">
+            <input type="search" id="q" name="q" th:value="${query}" placeholder="Filter sessions&hellip;">
+            <div class="fake-button" data-submit="true">Filter</div>
+        </form>
+        <span th:if="${query != null and !query.isBlank()}"
+              th:attr="data-href=@{/inaccessible}"
+              class="icon-button fake-link">&times;</span>
+    </div>
+
+    <div class="table">
+        <div class="row header-row">
+            <div class="cell">Title</div>
+            <div class="cell">Speaker</div>
+            <div class="cell">Time</div>
+            <div class="cell">Format</div>
+            <div class="cell">Action</div>
+        </div>
+        <div class="row" th:each="workshop : ${sessions}">
+            <div class="cell" th:text="${workshop.title()}">Session title</div>
+            <div class="cell" th:text="${workshop.speaker()}">Speaker</div>
+            <div class="cell" th:text="${workshop.timeSlot()}">Time slot</div>
+            <div class="cell"><img th:src="@{/img/session-icon.svg}" class="session-icon"></div>
+            <div class="cell">
+                <span th:attr="data-href=@{/inaccessible/register/{id}(id=${workshop.id()})}"
+                      class="register-link fake-link">Register</span>
+            </div>
+        </div>
+        <div class="row" th:if="${sessions.isEmpty()}">
+            <div class="cell">No sessions match that filter.</div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

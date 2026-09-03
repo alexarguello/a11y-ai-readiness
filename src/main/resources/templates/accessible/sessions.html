@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>JCON Workshops — accessible</title>
+    <link rel="stylesheet" th:href="@{/css/main.css}">
+</head>
+<body class="variant-accessible">
+<header>
+    <h1>JCON Workshops</h1>
+</header>
+<main>
+    <div class="filter-bar">
+        <form th:action="@{/accessible}" method="get" class="filter-form">
+            <label for="q">Filter sessions</label>
+            <input type="search" id="q" name="q" th:value="${query}" placeholder="e.g. accessible, Spring AI, Rivera">
+            <button type="submit">Filter</button>
+        </form>
+        <a th:if="${query != null and !query.isBlank()}" th:href="@{/accessible}"
+           class="icon-button" aria-label="Clear filter">&times;</a>
+    </div>
+
+    <table>
+        <caption class="visually-hidden">JCON workshop sessions</caption>
+        <thead>
+        <tr>
+            <th scope="col">Title</th>
+            <th scope="col">Speaker</th>
+            <th scope="col">Time</th>
+            <th scope="col">Format</th>
+            <th scope="col">Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="workshop : ${sessions}">
+            <td th:text="${workshop.title()}">Session title</td>
+            <td th:text="${workshop.speaker()}">Speaker</td>
+            <td th:text="${workshop.timeSlot()}">Time slot</td>
+            <td><img th:src="@{/img/session-icon.svg}" alt="In-person session" class="session-icon"></td>
+            <td>
+                <a th:href="@{/accessible/register/{id}(id=${workshop.id()})}" class="register-link">Register<span
+                        class="visually-hidden" th:text="' for ' + ${workshop.title()}"></span></a>
+            </td>
+        </tr>
+        <tr th:if="${sessions.isEmpty()}">
+            <td colspan="5">No sessions match that filter.</td>
+        </tr>
+        </tbody>
+    </table>
+</main>
+</body>
+</html>

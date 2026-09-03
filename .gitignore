@@ -1,22 +1,40 @@
+HELP.md
+target/
+.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
 # Secrets — never commit real API keys
 secrets.properties
 .env
 
-# Maven
-target/
-!.mvn/wrapper/maven-wrapper.jar
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
 
-# IDE
-.idea/
+# IDE — .idea/ is tracked selectively (see .idea/.gitignore) so the Maven
+# import + JDK config travels with the repo, same convention as yoda-keyword-extractor
+*.iws
 *.iml
 *.ipr
-*.iws
-.vscode/
 
-# OS
-Thumbs.db
-Desktop.ini
-.DS_Store
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+### VS Code ###
+.vscode/
 
 # Playwright / demo artifacts
 playwright-report/
@@ -25,3 +43,4 @@ screenshots/actual/
 screenshots/diff/
 recordings/
 *.log
+/.idea/

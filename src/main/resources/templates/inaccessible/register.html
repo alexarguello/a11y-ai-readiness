@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="'Register — ' + ${workshop.title()}">Register</title>
+    <link rel="stylesheet" th:href="@{/css/main.css}">
+    <script th:src="@{/js/fake-widgets.js}" defer></script>
+</head>
+<body class="variant-inaccessible">
+<div class="header">
+    <div class="nav"><span th:attr="data-href=@{/inaccessible}" class="fake-link">&larr; Back to sessions</span></div>
+    <div class="h1" th:text="'Register: ' + ${workshop.title()}">Register</div>
+    <p th:text="${workshop.speaker()} + ' — ' + ${workshop.timeSlot()}">Speaker — Time</p>
+</div>
+<div class="main">
+
+    <form th:action="@{/inaccessible/register/{id}(id=${workshop.id()})}" th:object="${registrationForm}" method="post">
+
+        <div class="field">
+            <input type="text" id="name" th:field="*{name}" placeholder="Full name"
+                   th:classappend="${#fields.hasErrors('name')} ? 'has-error' : ''">
+        </div>
+
+        <div class="field">
+            <input type="email" id="email" th:field="*{email}" placeholder="Email address"
+                   th:classappend="${#fields.hasErrors('email')} ? 'has-error' : ''">
+        </div>
+
+        <div class="field">
+            <div class="fake-select" th:classappend="${#fields.hasErrors('mealPreference')} ? 'has-error' : ''">
+                <div class="fake-select-trigger">
+                    <span th:each="option : ${T(com.a11y.a11y_ai_readiness.registration.MealPreference).values()}"
+                          th:if="${registrationForm.mealPreference} == ${option}"
+                          th:text="${option.label}">Choose one&hellip;</span>
+                    <span th:if="${registrationForm.mealPreference} == null">Meal preference&hellip;</span>
+                </div>
+                <div class="fake-select-list">
+                    <div class="fake-select-option" th:each="option : ${T(com.a11y.a11y_ai_readiness.registration.MealPreference).values()}"
+                         th:attr="data-value=${option}" th:text="${option.label}">Meal option</div>
+                </div>
+                <input type="hidden" th:field="*{mealPreference}">
+            </div>
+        </div>
+
+        <div class="field field-checkbox">
+            <input type="checkbox" id="acceptTerms" th:field="*{acceptTerms}"
+                   th:classappend="${#fields.hasErrors('acceptTerms')} ? 'has-error' : ''">
+            <span>I accept the workshop terms and conditions</span>
+        </div>
+
+        <div class="fake-button" data-submit="true">Complete registration</div>
+    </form>
+</div>
+</body>
+</html>
