@@ -15,6 +15,7 @@
 	<description>JCON talk demo: same UI, three machine-readable realities</description>
 	<properties>
 		<java.version>25</java.version>
+		<spring-ai.version>2.0.1</spring-ai.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -28,6 +29,25 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-webmvc</artifactId>
+		</dependency>
+		<dependency>
+			<!-- Also used by the agent's tools (task 6) to drive the browser via ariaSnapshot(),
+			     and by the visual-parity test (task 4) and axe-core script (task 5); not the
+			     full stretch-goal test suite, see docs/PLAN.md -->
+			<groupId>com.microsoft.playwright</groupId>
+			<artifactId>playwright</artifactId>
+			<version>1.62.0</version>
+		</dependency>
+		<dependency>
+			<!-- xAI/Grok via Spring AI's OpenAI-compatible client (task 6); Anthropic to follow -->
+			<groupId>org.springframework.ai</groupId>
+			<artifactId>spring-ai-starter-model-openai</artifactId>
+		</dependency>
+		<dependency>
+			<!-- Boot 4 split Jackson out of spring-boot-starter-webmvc into its own opt-in
+			     starter; the app never needed JSON before the agent's results/*.json output -->
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-jackson</artifactId>
 		</dependency>
 
 		<dependency>
@@ -46,6 +66,18 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework.ai</groupId>
+				<artifactId>spring-ai-bom</artifactId>
+				<version>${spring-ai.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 
 	<build>
 		<plugins>

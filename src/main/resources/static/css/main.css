@@ -3,6 +3,15 @@
    equally, targeting either the real semantic element or its div/span
    look-alike so the two stay pixel-identical. */
 
+/* Without this, a real <table>'s fixed column widths (which include
+   padding) and a CSS-grid <div>'s default content-box sizing (which
+   adds padding on top of the track width) disagree on where content
+   sits, even with identical width values — this is what caused the
+   column text to render at slightly different x-positions. */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
 body {
     font-family: system-ui, sans-serif;
     max-width: 44rem;
@@ -41,7 +50,8 @@ nav, .nav {
    two to drift apart. */
 table, .table {
     width: 100%;
-    border-collapse: collapse;
+    border-collapse: separate;
+    border-spacing: 0;
     margin-top: 1rem;
 }
 
@@ -60,6 +70,7 @@ table {
 
 th, td, .table .cell {
     text-align: left;
+    vertical-align: top;
     padding: 0.6rem 0.5rem;
     border-bottom: 1px solid #ddd;
 }

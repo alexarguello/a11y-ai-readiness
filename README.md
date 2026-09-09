@@ -68,6 +68,22 @@ cp secrets.properties.example secrets.properties
 
 See the comments in `secrets.properties.example` for which keys are needed and where to get them.
 
+## Running the AI agent
+
+An explicitly-triggered agent (xAI/Grok for now, Anthropic to follow) drives the registration
+flow through the same accessibility-tree primitives a real assistive technology or automation
+tool would use (`getByRole`/`getByLabel` under the hood) — nothing about its tools reads raw HTML.
+It never runs during normal `./mvnw spring-boot:run` or `mvn test`, only when explicitly told to:
+
+```
+./mvnw spring-boot:run -Dspring-boot.run.arguments="--agent.run=true --variant=accessible"
+```
+
+`--variant` is `accessible` or `inaccessible`. Each run writes one `results/*.json` file (turns,
+tool calls, tokens, estimated cost, the confirmation code if it got one) and then the process
+exits — it's a one-shot CLI tool, not another way to start the server. Requires `xai.api.key` set
+in `secrets.properties` or the `XAI_API_KEY` environment variable.
+
 ## Tech stack
 
 | Piece | Choice |
@@ -77,7 +93,8 @@ See the comments in `secrets.properties.example` for which keys are needed and w
 | Web | Spring MVC (`spring-boot-starter-webmvc`) |
 | Templates | Thymeleaf, server-rendered — no Node, no npm, no frontend build step |
 | Validation | Jakarta Bean Validation (`spring-boot-starter-validation`) |
-| Dynamic bits | ~30 lines of vanilla JS (`static/js/fake-widgets.js`), used only on `/inaccessible` to make its fake dropdown/buttons mouse-clickable |
+| Dynamic bits | ~30 lines of vanilla JS: `async-form.js` (accessible form, live-region error updates) and `fake-widgets.js` (inaccessible variant's mouse-only fake controls) |
+| AI agent | Spring AI 2.0.1, xAI/Grok via the OpenAI-compatible client; tool-calling backed by Playwright's `ariaSnapshot()` |
 | Build | Maven, via the checked-in wrapper (`./mvnw`) |
 | Data | In-memory (`SessionRepository`) — no database |
 
@@ -90,7 +107,8 @@ what's stretch-goal (Playwright, Vaadin, Spring AI) vs. already built.
 src/main/java/com/a11y/a11y_ai_readiness/
 ├── web/            SessionController (serves both variants), HomeController (landing page)
 ├── session/         WorkshopSession, SessionRepository (in-memory sample data)
-└── registration/     RegistrationForm, MealPreference
+├── registration/     RegistrationForm, MealPreference
+└── agent/            AgentRunner (--agent.run=true), RegistrationAgentTools, ModelPricing
 
 src/main/resources/
 ├── templates/accessible/     sessions.html, register.html, confirmation.html

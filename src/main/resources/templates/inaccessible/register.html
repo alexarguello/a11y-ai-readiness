@@ -14,7 +14,8 @@
 </div>
 <div class="main">
 
-    <form th:action="@{/inaccessible/register/{id}(id=${workshop.id()})}" th:object="${registrationForm}" method="post">
+    <form th:action="@{/inaccessible/register/{id}(id=${workshop.id()})}" th:object="${registrationForm}"
+          method="post" novalidate>
 
         <div class="field">
             <input type="text" id="name" th:field="*{name}" placeholder="Full name"
