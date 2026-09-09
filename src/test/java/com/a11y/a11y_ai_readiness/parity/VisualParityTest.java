@@ -17,8 +17,10 @@ import java.nio.file.Path;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
- * Proves the fairness claim the whole talk rests on (docs/PLAN.md §6.1): to a sighted mouse
- * user, /accessible and /inaccessible render as the same product. Only the markup differs.
+ * Asserts that to a sighted mouse user, /accessible and /inaccessible render as the same
+ * product — only the markup differs. This is the guardrail for the whole comparison: if the two
+ * pages ever drift apart visually, any difference in how a screen reader or an agent copes with
+ * them could be attributed to the visual design instead of to the semantics.
  *
  * Requires Chromium to be installed once per machine:
  *   ./mvnw exec:java -e -Dexec.mainClass=com.microsoft.playwright.CLI -Dexec.args="install chromium"

@@ -19,8 +19,10 @@ import org.springframework.http.HttpStatus;
 import java.util.UUID;
 
 /**
- * Serves both the /accessible and /inaccessible variants from one controller and one
- * backend — only the template resolved per {variant} differs. See docs/PLAN.md §4.
+ * Serves both the /accessible and /inaccessible variants from one controller and one backend —
+ * only the template resolved per {variant} differs. Sharing the controller, the validation and
+ * the CSS is deliberate: markup semantics are then the only thing that varies between the two
+ * pages, so any difference in how a screen reader or an agent handles them has one cause.
  */
 @Controller
 @RequestMapping("/{variant:accessible|inaccessible}")

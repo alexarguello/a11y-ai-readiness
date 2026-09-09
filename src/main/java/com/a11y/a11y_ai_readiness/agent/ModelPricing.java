@@ -5,8 +5,8 @@ import java.util.Map;
 
 /**
  * $ per million tokens, checked against the provider's published pricing at the time this was
- * written (docs/PLAN.md task 6) rather than assumed -- these drift, so re-verify before task 8's
- * multi-run cost numbers go on a slide.
+ * written rather than assumed -- these rates drift, so re-verify them before any cost figure
+ * derived from them is published or presented.
  */
 final class ModelPricing {
 

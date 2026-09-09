@@ -31,15 +31,14 @@
 			<artifactId>spring-boot-starter-webmvc</artifactId>
 		</dependency>
 		<dependency>
-			<!-- Also used by the agent's tools (task 6) to drive the browser via ariaSnapshot(),
-			     and by the visual-parity test (task 4) and axe-core script (task 5); not the
-			     full stretch-goal test suite, see docs/PLAN.md -->
+			<!-- Drives a real browser for two things: the agent's tools, which perceive the page
+			     only through ariaSnapshot(), and the visual-parity test -->
 			<groupId>com.microsoft.playwright</groupId>
 			<artifactId>playwright</artifactId>
 			<version>1.62.0</version>
 		</dependency>
 		<dependency>
-			<!-- xAI/Grok via Spring AI's OpenAI-compatible client (task 6); Anthropic to follow -->
+			<!-- xAI/Grok via Spring AI's OpenAI-compatible client; Anthropic to follow -->
 			<groupId>org.springframework.ai</groupId>
 			<artifactId>spring-ai-starter-model-openai</artifactId>
 		</dependency>

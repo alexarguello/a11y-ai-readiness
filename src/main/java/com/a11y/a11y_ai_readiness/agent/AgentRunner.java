@@ -23,8 +23,8 @@ import java.time.Instant;
 import java.util.List;
 
 /**
- * Explicitly-triggered "runnable agent" (docs/PLAN.md task 6): drives one attempt at the
- * registration task against one variant, using the app's own already-started embedded server as
+ * Explicitly-triggered "runnable agent": drives one attempt at the registration task against
+ * one variant, using the app's own already-started embedded server as
  * the target. Never runs during normal `./mvnw spring-boot:run` or `mvn test` -- only when
  * launched with --agent.run=true, so it never fires (or spends API credit) by accident.
  *
@@ -43,6 +43,9 @@ class AgentRunner implements ApplicationRunner {
 
     @Value("${agent.headless:true}")
     private boolean headless;
+
+    @Value("${agent.max.turns:30}")
+    private int maxToolCalls;
 
     AgentRunner(ChatModel chatModel, ObjectMapper objectMapper, ConfigurableApplicationContext context) {
         this.chatModel = chatModel;
@@ -67,7 +70,7 @@ class AgentRunner implements ApplicationRunner {
             try (Browser browser = playwright.chromium()
                     .launch(new com.microsoft.playwright.BrowserType.LaunchOptions().setHeadless(headless))) {
                 Page page = browser.newPage();
-                RegistrationAgentTools tools = new RegistrationAgentTools(page, baseUrl);
+                RegistrationAgentTools tools = new RegistrationAgentTools(page, baseUrl, maxToolCalls);
 
                 ChatClient chatClient = ChatClient.builder(chatModel).build();
 
@@ -77,7 +80,7 @@ class AgentRunner implements ApplicationRunner {
                                 You can ONLY perceive and interact with the page through the tools provided --
                                 you have no other access to the page (no raw HTML, no screenshots). Use `snapshot`
                                 whenever you're unsure what's currently on screen. Use `click`/`fill`/`selectOption`/
-                                `check` to act on elements by their accessible role and name. If a tool call fails
+                                `check`/`type` to act on elements by their accessible role and name. If a tool call fails
                                 because no element exposes the role/name/label you tried, that failure is itself
                                 useful information -- report it rather than guessing wildly forever.
                                 """)
@@ -112,6 +115,8 @@ class AgentRunner implements ApplicationRunner {
                         tools.confirmationCode() != null,
                         tools.confirmationCode(),
                         tools.toolCallCount(),
+                        tools.maxToolCalls(),
+                        tools.budgetExhausted(),
                         promptTokens,
                         completionTokens,
                         totalTokens,
@@ -125,7 +130,12 @@ class AgentRunner implements ApplicationRunner {
 
         writeResult(result);
         System.out.println("Agent run finished: success=" + result.success() + " toolCalls=" + result.toolCalls()
+                + "/" + result.maxToolCalls()
                 + " totalTokens=" + result.totalTokens() + " estimatedCostUsd=" + result.estimatedCostUsd());
+        if (result.budgetExhausted()) {
+            System.out.println("WARNING: hit the " + result.maxToolCalls() + "-call cap, so the model was cut off "
+                    + "rather than finishing. Treat this run as spoiled data and exclude it from aggregates.");
+        }
 
         System.exit(SpringApplication.exit(context, () -> 0));
     }

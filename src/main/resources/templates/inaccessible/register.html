@@ -49,7 +49,14 @@
             <span>I accept the workshop terms and conditions</span>
         </div>
 
-        <div class="fake-button" data-submit="true">Complete registration</div>
+        <!-- Deliberately a REAL button, unlike every other control on this page. This was a
+             role-less div, which made the form impossible to submit: a screen reader could not
+             focus it (no tabindex) and an agent could not target it (no role). With no way to
+             submit, the validation error below could never be reached, so the defect this page
+             exists to demonstrate -- an error signalled by border colour alone, with no text and
+             no live region -- was unobservable. Keeping this one control real isolates that
+             defect instead of hiding it behind an earlier, cruder one. -->
+        <button type="submit">Complete registration</button>
     </form>
 </div>
 </body>

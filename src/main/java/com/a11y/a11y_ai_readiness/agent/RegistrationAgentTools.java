@@ -14,8 +14,7 @@ import java.util.regex.Pattern;
  * The agent's only way to perceive and act on the page — deliberately mirrors what a real
  * assistive technology or Playwright-MCP-style tool can do: read the accessibility tree, and
  * act on elements by their accessible role/label. Nothing here reads raw HTML or CSS, so
- * /inaccessible breaks these tools for the same underlying reason it breaks a screen reader
- * (docs/PLAN.md §1).
+ * /inaccessible breaks these tools for the same underlying reason it breaks a screen reader.
  */
 public class RegistrationAgentTools {
 
@@ -29,14 +28,17 @@ public class RegistrationAgentTools {
 
     private final Page page;
     private final String baseUrl;
+    private final int maxToolCalls;
     private final List<String> actionLog = new ArrayList<>();
     private int toolCallCount = 0;
     private String confirmationCode = null;
     private int lastSnapshotLength = 0;
+    private boolean budgetExhausted = false;
 
-    public RegistrationAgentTools(Page page, String baseUrl) {
+    public RegistrationAgentTools(Page page, String baseUrl, int maxToolCalls) {
         this.page = page;
         this.baseUrl = baseUrl;
+        this.maxToolCalls = maxToolCalls;
     }
 
     @Tool(description = "Navigate to a path on the site under test, e.g. /accessible or /accessible/register/accessible-forms. Returns the resulting page's accessibility tree.")
@@ -72,6 +74,25 @@ public class RegistrationAgentTools {
         });
     }
 
+    // `fill` above targets by label only, so a field whose only accessible name comes from a
+    // `placeholder` could be focused via `click` but never typed into. That made /inaccessible's
+    // failure partly an artifact of this harness rather than of the page -- an unfair comparison,
+    // and an easy one to poke a hole in. Real agent tooling targets by the role/name it read from
+    // the snapshot, so this tool restores that and gives both variants identical affordances.
+    // Which of the two tools a run reached for is itself worth reading in the action log: on
+    // /accessible the label-based `fill` works; on /inaccessible only this fallback does.
+    @Tool(description = "Type text into the element with this accessible role (usually textbox) and accessible name. Use this when `fill` fails because the field has no real label, but the snapshot still shows a name for it.")
+    public String type(@ToolParam(description = "accessible role, usually textbox") String role,
+                        @ToolParam(description = "accessible name of the field") String name,
+                        @ToolParam(description = "text to type") String value) {
+        return record("type role=%s name=%s value=%s".formatted(role, name, value), () -> {
+            AriaRole ariaRole = AriaRole.valueOf(role.trim().toUpperCase());
+            page.getByRole(ariaRole, new Page.GetByRoleOptions().setName(name))
+                    .fill(value, new com.microsoft.playwright.Locator.FillOptions().setTimeout(ACTION_TIMEOUT_MS));
+            return currentSnapshot();
+        });
+    }
+
     @Tool(description = "Choose an option in the select/combobox with this accessible label.")
     public String selectOption(@ToolParam(description = "accessible label of the field") String label,
                                 @ToolParam(description = "visible text of the option to choose") String optionText) {
@@ -92,6 +113,19 @@ public class RegistrationAgentTools {
 
     int toolCallCount() {
         return toolCallCount;
+    }
+
+    /**
+     * True if the run hit the hard cap. Such a run is spoiled data, not a result: the model was
+     * cut off rather than deciding it was finished, so its tool-call count is the cap rather
+     * than a measurement, and it should be excluded from any aggregate.
+     */
+    boolean budgetExhausted() {
+        return budgetExhausted;
+    }
+
+    int maxToolCalls() {
+        return maxToolCalls;
     }
 
     List<String> actionLog() {
@@ -120,7 +154,17 @@ public class RegistrationAgentTools {
         String run() throws Exception;
     }
 
+    // Enforced here rather than via spring.ai.tools.limits.max-total-tool-calls, which was set
+    // to 15 and did not constrain anything -- a real /inaccessible run made 28 calls straight
+    // through it. This counter is the one the results are reported from, so capping it here is
+    // both provider-agnostic and guaranteed to agree with the recorded number.
     private String record(String description, Action action) {
+        if (toolCallCount >= maxToolCalls) {
+            budgetExhausted = true;
+            actionLog.add(description + " -> BUDGET EXHAUSTED (cap " + maxToolCalls + ")");
+            return ("TOOL BUDGET EXHAUSTED: all %d permitted tool calls have been used. "
+                    + "Stop calling tools now and report what stopped you.").formatted(maxToolCalls);
+        }
         toolCallCount++;
         try {
             String result = action.run();

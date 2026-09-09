@@ -8,7 +8,7 @@ import java.nio.file.Path;
 /**
  * Pixel-by-pixel comparison between two screenshots, tolerant of the minor anti-aliasing
  * noise browsers introduce on otherwise-identical renders. Writes a diff image highlighting
- * every differing pixel in magenta, for use as evidence (docs/PLAN.md §6.1).
+ * every differing pixel in magenta, so a failure can be inspected rather than merely reported.
  */
 final class ScreenshotDiff {
 
