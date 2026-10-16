@@ -44,3 +44,6 @@ screenshots/diff/
 recordings/
 *.log
 /.idea/
+
+# retired assets, pending permanent deletion
+.retired-2026-10-14/

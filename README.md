@@ -1,7 +1,10 @@
 # a11y-ai-readiness
 
-The same Java web app, built twice. Identical pixels, identical backend, identical CSS — only the
-markup semantics differ. That alone decides whether a screen reader *or* an AI agent can use it.
+The same Java web app, built twice: identical backend, identical CSS, only the markup differs.
+The session list is proven pixel-identical between the two variants; the registration form, where
+the actual testing happened, looks the same and works the same way, with nothing a user would
+notice visually. That markup difference alone decides whether a screen reader or an AI agent can
+use it.
 
 ## Why a developer should care
 
@@ -64,8 +67,18 @@ stylesheet. Only the templates differ.
 | Validation error | `role="alert"` + text + `aria-describedby` | red border, no text |
 | Focus | visible ring everywhere | `outline: none` |
 
-`VisualParityTest` asserts the two render pixel-identically, so no difference in outcome can be
-blamed on the visual design. `/` links to both.
+`VisualParityTest` asserts the session list renders pixel-identically between the two variants, so
+no difference in outcome there can be blamed on the visual design. The registration form shares
+the same CSS and isn't separately screenshot-tested, but looks and behaves the same way; the
+differences that matter live entirely in the markup, not anything visible. `AxeBaselineTest` runs
+axe-core against the session list and the
+registration form on both variants, writing WCAG violation counts to `results/axe-*.json` —
+third-party confirmation that `/inaccessible` is really non-compliant, not just a comparison
+rigged to fail. `DashboardGeneratorTest` reads every `results/*.json` — agent runs, axe-core, and
+`results/nvda-*.json` (a structured transcription of the confirmed NVDA findings) — and renders
+`results/dashboard.html`: a headline claim plus a unified pass/fail matrix across the screen
+reader and both AI vendors, with cost and axe-core detail underneath as supporting evidence. No
+server or browser needed to generate or view it. `/` links to both variants.
 
 **One deliberate exception:** the broken variant's *submit* button is real. As a role-less `<div>`
 it was unreachable by keyboard and by role, so the form couldn't be submitted at all — which put
@@ -94,13 +107,35 @@ look, role/name lookups to act. Nothing in its toolset reads raw HTML or CSS, wh
 the comparison meaningful. It never runs during `spring-boot:run` or `mvn test`:
 
 ```bash
-./mvnw spring-boot:run -Dspring-boot.run.arguments="--agent.run=true --variant=accessible"
+./mvnw spring-boot:run -Dspring-boot.run.arguments="--agent.run=true --variant=accessible --provider=xai"
 ```
 
-`--variant` is `accessible` or `inaccessible`. Each run writes one `results/*.json` (tool calls,
-tokens, estimated cost, the action log, the confirmation code if it got one) and exits.
+`--variant` is `accessible` or `inaccessible`. `--provider` is `xai` (Grok) or `anthropic` (Claude
+Sonnet 5) — omit it to use whatever `agent.provider` is set to in `secrets.properties` (`xai` by
+default). Both providers' clients are always wired up; only the one you pick for a given run
+actually gets called. Each run writes one `results/*.json` (tool calls, tokens, estimated cost,
+the action log, the confirmation code if it got one) and exits.
 
-Needs `xai.api.key` in `secrets.properties` or `XAI_API_KEY` in the environment. Keys are never
+### Multi-run pass (task 8)
+
+Add `--runs=N` to run both variants N times each instead of a single one-off attempt, in an
+alternating A-B-B-A order (docs/PLAN.md §6.6) so neither variant systematically benefits from
+running first or last:
+
+```bash
+./mvnw spring-boot:run -Dspring-boot.run.arguments="--agent.run=true --runs=5 --provider=xai"
+```
+
+`--variant` is ignored in this mode (both run). This makes 2×N real API calls in one process —
+based on single-run costs observed so far (roughly $0.04–$0.13 per run), N=5 (10 total calls) is
+in the neighborhood of **$0.50–$1.50 per provider**, not a fixed number — watch the console as it
+runs rather than assuming. Writes one `results/*.json` per run plus one
+`results/summary-<provider>-*.json` with medians and ranges per variant (runs that hit the
+tool-call budget cap are excluded from the summary as spoiled data — the model was cut off, not
+finished). Run each provider separately, same as single runs.
+
+Needs the corresponding key — `xai.api.key` / `XAI_API_KEY` for Grok, `anthropic.api.key` /
+`ANTHROPIC_API_KEY` for Claude — in `secrets.properties` or the environment. Keys are never
 committed — `cp secrets.properties.example secrets.properties` and see that file's comments.
 
 ## Tech stack
@@ -112,7 +147,7 @@ committed — `cp secrets.properties.example secrets.properties` and see that fi
 | Templates | Thymeleaf, server-rendered — no frontend build step |
 | Validation | Jakarta Bean Validation |
 | Dynamic bits | ~30 lines of vanilla JS: `async-form.js` (live-region error updates) and `fake-widgets.js` (the broken variant's mouse-only controls) |
-| AI agent | Spring AI 2.0.1, xAI/Grok via the OpenAI-compatible client; tools backed by Playwright |
+| AI agent | Spring AI 2.0.1 — xAI/Grok via the OpenAI-compatible client, Anthropic via its own client; tools backed by Playwright |
 | Build | Maven via the checked-in wrapper |
 | Data | In-memory `SessionRepository` — no database |
 

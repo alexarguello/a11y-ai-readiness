@@ -15,6 +15,7 @@ final class ModelPricing {
 
     private static final Map<String, Rate> RATES = Map.of(
             "grok-4.6", new Rate(new BigDecimal("2.00"), new BigDecimal("6.00")),
+            "claude-sonnet-5", new Rate(new BigDecimal("2.00"), new BigDecimal("10.00")),
             "grok-4.3", new Rate(new BigDecimal("1.25"), new BigDecimal("2.50"))
     );
 
