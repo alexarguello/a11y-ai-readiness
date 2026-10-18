@@ -1,0 +1,19 @@
+{
+  "variant" : "inaccessible",
+  "provider" : "anthropic",
+  "model" : "claude-sonnet-5",
+  "startedAt" : "2026-09-11T00:58:33.662187500Z",
+  "finishedAt" : "2026-09-11T00:58:59.829830200Z",
+  "success" : false,
+  "confirmationCode" : null,
+  "toolCalls" : 4,
+  "maxToolCalls" : 15,
+  "budgetExhausted" : false,
+  "promptTokens" : 14038,
+  "completionTokens" : 868,
+  "totalTokens" : 14906,
+  "estimatedCostUsd" : 0.036756,
+  "finalSnapshotChars" : 513,
+  "finalModelMessage" : "I was unable to complete the registration. The \"Register\" controls on the `/inaccessible` page for \"Building Accessible Forms in Java\" are rendered as plain, non-interactive text (with unlabeled `img` elements nearby) rather than as an actual accessible button or link with the name \"Register\". My tools operate strictly via accessible roles/names, and attempts to click it as a `button`, `link`, or `img` all timed out because no such accessible element exists in the tree.\n\n**Result: Registration could not be started.** The page's \"Register\" action has no exposed accessible role/name (it appears to be a non-semantic element, e.g., a `div`/`span` with a click handler and no ARIA role), so it cannot be located or activated using role-based accessible interactions. This is exactly the kind of accessibility failure this page seems designed to demonstrate — I could not proceed to the name/email form, meal preference, or terms checkbox, and therefore have no confirmation code to report.",
+  "actionLog" : [ "navigate /inaccessible -> ok", "click role=button name=Register -> TOOL ERROR: TimeoutError: Error {\n  message='Timeout 3000ms exceeded.\n  name='TimeoutError\n  stack='TimeoutError: Timeout 3000ms exceeded.\n    at _ProgressController.run (C:\\Users\\ALEXAN~1\\AppData\\Local\\Temp\\playwright-java-601150344965846806\\package\\lib\\coreBundle.js:12135:32)\n    at DispatcherConnection.dispatch (C:\\Users\\ALEXAN~1\\AppData\\Local\\Temp\\playwright-java-601150344965846806\\package\\lib\\coreBundle.js:18775:44)\n}\nCall log:\n-   - waiting for getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName(\"Register\"))\n", "click role=link name=Register -> TOOL ERROR: TimeoutError: Error {\n  message='Timeout 3000ms exceeded.\n  name='TimeoutError\n  stack='TimeoutError: Timeout 3000ms exceeded.\n    at _ProgressController.run (C:\\Users\\ALEXAN~1\\AppData\\Local\\Temp\\playwright-java-601150344965846806\\package\\lib\\coreBundle.js:12135:32)\n    at DispatcherConnection.dispatch (C:\\Users\\ALEXAN~1\\AppData\\Local\\Temp\\playwright-java-601150344965846806\\package\\lib\\coreBundle.js:18775:44)\n}\nCall log:\n-   - waiting for getByRole(AriaRole.LINK, new Page.GetByRoleOptions().setName(\"Register\"))\n", "click role=img name=Register -> TOOL ERROR: TimeoutError: Error {\n  message='Timeout 3000ms exceeded.\n  name='TimeoutError\n  stack='TimeoutError: Timeout 3000ms exceeded.\n    at _ProgressController.run (C:\\Users\\ALEXAN~1\\AppData\\Local\\Temp\\playwright-java-601150344965846806\\package\\lib\\coreBundle.js:12135:32)\n    at DispatcherConnection.dispatch (C:\\Users\\ALEXAN~1\\AppData\\Local\\Temp\\playwright-java-601150344965846806\\package\\lib\\coreBundle.js:18775:44)\n}\nCall log:\n-   - waiting for getByRole(AriaRole.IMG, new Page.GetByRoleOptions().setName(\"Register\"))\n" ]
+}

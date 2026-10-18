@@ -1,0 +1,40 @@
+{
+  "variant": "inaccessible",
+  "page": "register",
+  "url": "http://localhost:51628/inaccessible/register/accessible-forms",
+  "violationCount": 4,
+  "totalNodesAffected": 9,
+  "violations": [
+    {
+      "id": "label",
+      "impact": "critical",
+      "description": "Ensure every form element has a label",
+      "wcagTags": [
+        "wcag2a",
+        "wcag412"
+      ],
+      "nodeCount": 1
+    },
+    {
+      "id": "landmark-one-main",
+      "impact": "moderate",
+      "description": "Ensure the document has a main landmark",
+      "wcagTags": [],
+      "nodeCount": 1
+    },
+    {
+      "id": "page-has-heading-one",
+      "impact": "moderate",
+      "description": "Ensure that the page, or at least one of its frames contains a level-one heading",
+      "wcagTags": [],
+      "nodeCount": 1
+    },
+    {
+      "id": "region",
+      "impact": "moderate",
+      "description": "Ensure all page content is contained by landmarks",
+      "wcagTags": [],
+      "nodeCount": 6
+    }
+  ]
+}

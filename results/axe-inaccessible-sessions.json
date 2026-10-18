@@ -1,0 +1,40 @@
+{
+  "variant": "inaccessible",
+  "page": "sessions",
+  "url": "http://localhost:51628/inaccessible",
+  "violationCount": 4,
+  "totalNodesAffected": 9,
+  "violations": [
+    {
+      "id": "image-alt",
+      "impact": "critical",
+      "description": "Ensure <img> elements have alternative text or a role of none or presentation",
+      "wcagTags": [
+        "wcag2a",
+        "wcag111"
+      ],
+      "nodeCount": 5
+    },
+    {
+      "id": "landmark-one-main",
+      "impact": "moderate",
+      "description": "Ensure the document has a main landmark",
+      "wcagTags": [],
+      "nodeCount": 1
+    },
+    {
+      "id": "page-has-heading-one",
+      "impact": "moderate",
+      "description": "Ensure that the page, or at least one of its frames contains a level-one heading",
+      "wcagTags": [],
+      "nodeCount": 1
+    },
+    {
+      "id": "region",
+      "impact": "moderate",
+      "description": "Ensure all page content is contained by landmarks",
+      "wcagTags": [],
+      "nodeCount": 2
+    }
+  ]
+}

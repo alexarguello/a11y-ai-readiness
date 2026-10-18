@@ -1,0 +1,19 @@
+{
+  "variant" : "accessible",
+  "provider" : "anthropic",
+  "model" : "claude-sonnet-5",
+  "startedAt" : "2026-09-20T01:35:44.993016200Z",
+  "finishedAt" : "2026-09-20T01:36:05.935378100Z",
+  "success" : true,
+  "confirmationCode" : "JCON-0A2137",
+  "toolCalls" : 11,
+  "maxToolCalls" : 40,
+  "budgetExhausted" : false,
+  "promptTokens" : 46191,
+  "completionTokens" : 1181,
+  "totalTokens" : 47372,
+  "estimatedCostUsd" : 0.104192,
+  "finalSnapshotChars" : 321,
+  "finalModelMessage" : "The registration actually succeeded (the timeout error was just because the page had already navigated to a confirmation screen before the type action could run). The final snapshot shows:\n\n**Registration successful!**\n\n- Attendee: Jordan Lee\n- Workshop: Building Accessible Forms in Java\n- Confirmation code: **JCON-0A2137**\n\nNote: The malformed email \"jordan-not-an-email\" correctly triggered a validation error (\"Enter a valid email address.\"). After correcting it to \"jordan.lee@example.com\" and resubmitting, the form appeared to still show the stale error message briefly, but the submission actually went through successfully (likely a UI rendering lag), landing on the confirmation page with the code above.",
+  "actionLog" : [ "navigate /accessible -> ok", "click role=link name=Register for Building Accessible Forms in Java -> ok", "fill label=Full name value=Jordan Lee -> ok", "fill label=Email address value=jordan-not-an-email -> ok", "selectOption label=Meal preference option=Standard -> ok", "check label=I accept the workshop terms and conditions -> ok", "click role=button name=Complete registration -> ok", "snapshot -> ok", "fill label=Email address value=jordan.lee@example.com -> ok", "click role=button name=Complete registration -> ok", "type role=textbox name=Email address value=jordan.lee@example.com -> TOOL ERROR: TimeoutError: Error {\n  message='Timeout 3000ms exceeded.\n  name='TimeoutError\n  stack='TimeoutError: Timeout 3000ms exceeded.\n    at _ProgressController.run (C:\\Users\\ALEXAN~1\\AppData\\Local\\Temp\\playwright-java-3919610947768522059\\package\\lib\\coreBundle.js:12135:32)\n    at DispatcherConnection.dispatch (C:\\Users\\ALEXAN~1\\AppData\\Local\\Temp\\playwright-java-3919610947768522059\\package\\lib\\coreBundle.js:18775:44)\n}\nCall log:\n-   - waiting for getByRole(AriaRole.TEXTBOX, new Page.GetByRoleOptions().setName(\"Email address\"))\n" ]
+}

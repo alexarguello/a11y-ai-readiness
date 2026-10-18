@@ -1,0 +1,19 @@
+{
+  "variant" : "accessible",
+  "provider" : "xai",
+  "model" : "grok-4.6",
+  "startedAt" : "2026-09-20T01:00:57.564937300Z",
+  "finishedAt" : "2026-09-20T01:01:24.878700700Z",
+  "success" : true,
+  "confirmationCode" : "JCON-18B652",
+  "toolCalls" : 11,
+  "maxToolCalls" : 15,
+  "budgetExhausted" : false,
+  "promptTokens" : 43098,
+  "completionTokens" : 164,
+  "totalTokens" : 44249,
+  "estimatedCostUsd" : 0.087180,
+  "finalSnapshotChars" : 321,
+  "finalModelMessage" : "Confirmation code: **JCON-18B652**",
+  "actionLog" : [ "navigate /accessible -> ok", "click role=link name=Register for Building Accessible Forms in Java -> ok", "fill label=Full name value=Jordan Lee -> ok", "fill label=Email address value=jordan-not-an-email -> ok", "click role=button name=Complete registration -> ok", "snapshot -> ok", "fill label=Email address value=jordan.lee@example.com -> ok", "selectOption label=Meal preference option=Vegetarian -> ok", "check label=I accept the workshop terms and conditions -> ok", "click role=button name=Complete registration -> ok", "snapshot -> ok" ]
+}

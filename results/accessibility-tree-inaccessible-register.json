@@ -1,0 +1,6 @@
+{
+  "variant" : "inaccessible",
+  "page" : "register",
+  "url" : "http://localhost:61861/inaccessible/register/accessible-forms",
+  "snapshot" : "- text: \"← Back to sessions Register: Building Accessible Forms in Java\"\n- paragraph: A. Rivera — Tue 10:00\n- textbox \"Full name\"\n- textbox \"Email address\"\n- text: Meal preference…\n- checkbox\n- text: I accept the workshop terms and conditions\n- button \"Complete registration\""
+}

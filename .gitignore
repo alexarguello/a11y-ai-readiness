@@ -47,3 +47,8 @@ recordings/
 
 # retired assets, pending permanent deletion
 .retired-2026-10-14/
+
+# Full-size source videos — GitHub rejects >100MB and warns >50MB.
+# Only the trimmed cuts in docs/ are committed; keep originals local.
+docs/ORIG*.mp4
+docs/__pycache__/

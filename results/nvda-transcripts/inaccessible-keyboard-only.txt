@@ -1,0 +1,68 @@
+   1s | Other Bookmarks
+   1s | Account
+   1s | DesktopWindowXamlSource
+   1s | Resume recording button
+   1s | Recording resumed
+   1s | VPN
+   2s | Same registration flow, same backend, same CSS file — only the markup differs.
+   2s | — same task, div/span soup instead
+   2s | /inaccessible
+   3s | al ly-ai-readiness — Personal — Mozilla Firefox Private Browsing
+   3s | document
+   3s | main landmark
+   3s | list
+   3s | link visited
+   3s | JCON Workshops — inaccessible — Personal — Mozilla Firefox Private Browsing
+   3s | unknown
+   3s | JCON Workshops — inaccessible — Personal — Mozilla Firefox Private Browsing
+   3s | JCON Workshops — inaccessible
+   3s | JCON Workshops — inaccessible
+   3s | JCON Workshops
+   3s | Filter sessions... edit has auto complete
+   3s | Filter
+   3s | Title
+   3s | Speaker
+   3s | Time
+   3s | Format
+   3s | Action
+   4s | Building Accessible Forms in Java
+   8s | Filter sessions... edit has auto complete blank
+  18s | a
+  21s | Browser tabs tool bar
+  21s | tab control
+  21s | JCON Workshops — inaccessible tab selected 1 of 1 level 1
+  26s | Open a new tab (Ctrl+T) button 2 of 2
+  26s | Navigation tool bar
+  26s | Sidebars button Show sidebar (Alt+Ctrl+Z) 1 of 4
+  27s | Pick a Search Engine button collapsed subMenu Google, pick a search engine
+  28s | Search with Google or enter address combo box collapsed has auto complete editable selected
+  28s | http://localhost:8080/inaccessible
+  28s | Bookmark this page (Ctrl+D) button
+  29s | VPN button 1 of 5
+  29s | Bookmarks tool bar
+  29s | TV button subMenu 1 of 8
+  29s | JCON Workshops — inaccessible document
+  29s | Filter sessions... edit has auto complete rivera
+  31s | JCON Workshops — inaccessible
+  31s | JCON Workshops — inaccessible
+  31s | JCON Workshops
+  31s | Filter sessions... edit has auto complete
+  31s | Filter
+  31s | x Title
+  31s | Speaker
+  31s | Time
+  31s | Format
+  31s | Action
+  31s | Building Accessible Forms in Java
+  31s | rivera
+  33s | Filter sessions... edit has auto complete rivera
+  34s | Browser tabs tool bar
+  34s | tab control
+  34s | JCON Workshops — inaccessible tab selected 1 of 1 level 1
+  43s | Title
+  43s | Filter
+  43s | http://localhost:8080/inaccessible?q=rivera
+  43s | Browser tabs
+  43s | Private browsing
+  43s | Browser tabs
+  43s | DesktopWindowXamlSource

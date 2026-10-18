@@ -1,0 +1,33 @@
+{
+  "provider" : "anthropic",
+  "model" : "claude-sonnet-5",
+  "generatedAt" : "2026-09-20T01:37:45.224900900Z",
+  "perVariant" : {
+    "accessible" : {
+      "runs" : 5,
+      "excludedBudgetExhausted" : 0,
+      "successRate" : 1.0,
+      "medianToolCalls" : 11.0,
+      "minToolCalls" : 11,
+      "maxToolCalls" : 11,
+      "medianTotalTokens" : 46633.0,
+      "minTotalTokens" : 46506,
+      "maxTotalTokens" : 47551,
+      "medianCostUsd" : 0.104192,
+      "totalCostUsd" : 0.522178
+    },
+    "inaccessible" : {
+      "runs" : 5,
+      "excludedBudgetExhausted" : 0,
+      "successRate" : 0.0,
+      "medianToolCalls" : 3.0,
+      "minToolCalls" : 3,
+      "maxToolCalls" : 6,
+      "medianTotalTokens" : 10573.0,
+      "minTotalTokens" : 10371,
+      "maxTotalTokens" : 24208,
+      "medianCostUsd" : 0.026842,
+      "totalCostUsd" : 0.171040
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "variant": "accessible",
+  "page": "register",
+  "url": "http://localhost:51628/accessible/register/accessible-forms",
+  "violationCount": 0,
+  "totalNodesAffected": 0,
+  "violations": []
+}

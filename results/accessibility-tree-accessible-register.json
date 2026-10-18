@@ -1,0 +1,6 @@
+{
+  "variant" : "accessible",
+  "page" : "register",
+  "url" : "http://localhost:61861/accessible/register/accessible-forms",
+  "snapshot" : "- banner:\n  - navigation \"breadcrumb\":\n    - link \"← Back to sessions\":\n      - /url: /accessible\n  - 'heading \"Register: Building Accessible Forms in Java\" [level=1]'\n  - paragraph: A. Rivera — Tue 10:00\n- main:\n  - text: Full name\n  - textbox \"Full name\"\n  - text: Email address\n  - textbox \"Email address\"\n  - text: Meal preference\n  - combobox \"Meal preference\":\n    - option \"Choose one…\" [selected]\n    - option \"Standard\"\n    - option \"Vegetarian\"\n    - option \"Vegan\"\n    - option \"Gluten-free\"\n  - checkbox \"I accept the workshop terms and conditions\"\n  - text: I accept the workshop terms and conditions\n  - button \"Complete registration\""
+}

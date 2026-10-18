@@ -1,0 +1,19 @@
+{
+  "variant" : "accessible",
+  "provider" : "anthropic",
+  "model" : "claude-sonnet-5",
+  "startedAt" : "2026-09-11T00:52:11.985816400Z",
+  "finishedAt" : "2026-09-11T00:52:45.369647700Z",
+  "success" : true,
+  "confirmationCode" : "JCON-CF6757",
+  "toolCalls" : 12,
+  "maxToolCalls" : 15,
+  "budgetExhausted" : false,
+  "promptTokens" : 59250,
+  "completionTokens" : 1474,
+  "totalTokens" : 60724,
+  "estimatedCostUsd" : 0.13324,
+  "finalSnapshotChars" : 321,
+  "finalModelMessage" : "Registration completed successfully.\n\n**Summary:**\n1. Navigated to /accessible and selected \"Building Accessible Forms in Java\".\n2. Filled attendee name \"Jordan Lee\".\n3. Submitted with malformed email \"jordan-not-an-email\" — the site correctly showed a validation alert: *\"There's a problem with your registration. Please fix the highlighted fields below.\"* with the email field marked invalid and a message \"Enter a valid email address.\"\n4. Corrected the email to \"jordan.lee@example.com\", kept meal preference \"Standard\" selected and the terms checkbox checked, then resubmitted.\n5. Registration succeeded.\n\n**Confirmation code: JCON-CF6757**\n\nThe confirmation page reads: \"Thanks, Jordan Lee. Your registration for Building Accessible Forms in Java is confirmed.\"",
+  "actionLog" : [ "navigate /accessible -> ok", "click role=link name=Register for Building Accessible Forms in Java -> ok", "fill label=Full name value=Jordan Lee -> ok", "fill label=Email address value=jordan-not-an-email -> ok", "selectOption label=Meal preference option=Standard -> ok", "check label=I accept the workshop terms and conditions -> ok", "click role=button name=Complete registration -> ok", "snapshot -> ok", "fill label=Email address value=jordan.lee@example.com -> ok", "click role=button name=Complete registration -> ok", "type role=textbox name=Email address value=jordan.lee@example.com -> TOOL ERROR: TimeoutError: Error {\n  message='Timeout 3000ms exceeded.\n  name='TimeoutError\n  stack='TimeoutError: Timeout 3000ms exceeded.\n    at _ProgressController.run (C:\\Users\\ALEXAN~1\\AppData\\Local\\Temp\\playwright-java-7608629938741811868\\package\\lib\\coreBundle.js:12135:32)\n    at DispatcherConnection.dispatch (C:\\Users\\ALEXAN~1\\AppData\\Local\\Temp\\playwright-java-7608629938741811868\\package\\lib\\coreBundle.js:18775:44)\n}\nCall log:\n-   - waiting for getByRole(AriaRole.TEXTBOX, new Page.GetByRoleOptions().setName(\"Email address\"))\n", "snapshot -> ok" ]
+}

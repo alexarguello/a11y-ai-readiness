@@ -1,0 +1,20 @@
+{
+  "provider" : "xai",
+  "model" : "grok-4.6",
+  "generatedAt" : "2026-09-20T01:03:34.805289100Z",
+  "perVariant" : {
+    "accessible" : {
+      "runs" : 5,
+      "excludedBudgetExhausted" : 0,
+      "successRate" : 1.0,
+      "medianToolCalls" : 11.0,
+      "minToolCalls" : 11,
+      "maxToolCalls" : 11,
+      "medianTotalTokens" : 35331.0,
+      "minTotalTokens" : 33216,
+      "maxTotalTokens" : 44249,
+      "medianCostUsd" : 0.066924,
+      "totalCostUsd" : 0.355706
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "variant": "accessible",
+  "page": "sessions",
+  "url": "http://localhost:51628/accessible",
+  "violationCount": 0,
+  "totalNodesAffected": 0,
+  "violations": []
+}

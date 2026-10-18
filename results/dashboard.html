@@ -87,7 +87,7 @@ code { background: #f5f5f5; padding: 0.1em 0.35em; border-radius: 4px; font-size
 <body>
 <header>
     <h1>a11y-ai-readiness</h1>
-    <p class="subtitle">Same backend and functionality on both pages. Only the code behind them is different. Generated 2026-09-23 20:02:05 EDT</p>
+    <p class="subtitle">Same backend and functionality on both pages. Only the code behind them is different. Generated 2026-10-16 18:29:30 EDT</p>
 </header>
 <main>
     <section class="headline">
@@ -306,6 +306,7 @@ code { background: #f5f5f5; padding: 0.1em 0.35em; border-radius: 4px; font-size
 
             </tbody>
         </table>
+        <p class="note">Run as a Lighthouse audit in Edge DevTools rather than programmatically, the broken register form scores <strong>91 out of 100</strong> for accessibility (Lighthouse 13.4.1). Be careful comparing counts: the four findings listed above for that page &mdash; a missing label, no main landmark, no level-one heading, no region &mdash; are not the same four defects this page is about. Of those four, the scan flagged only the labels, and only partly. A high score is not a tested page.</p>
     </section>
     <section>
         <h2>Why it costs more when it fails</h2>
@@ -493,7 +494,7 @@ code { background: #f5f5f5; padding: 0.1em 0.35em; border-radius: 4px; font-size
     </section>
     <section>
         <h2>The fixes, and who requires them</h2>
-        <p class="lead">None of this is a matter of taste. Every fix below is required or recommended by the Web Content Accessibility Guidelines (WCAG), the standard most accessibility law and policy is built on. This is the "smallest fixes that restore reliability" this whole project is about, and it's what closes every gap shown above.</p>
+        <p class="lead">None of this is a matter of taste. Every fix below is required or recommended by the Web Content Accessibility Guidelines (WCAG), the standard most accessibility law and policy is built on. This is the "smallest fixes that restore reliability" this whole project is about, and it's what closes every gap shown above. Six fixes are listed: the four on the register form that everything above is measured against, plus two on the session list &mdash; the icon with no text alternative, and the page title and main content being styled <code>div</code>s.</p>
         <table class="fix-table">
             <thead><tr><th>Problem</th><th>Before</th><th>After</th><th>Required or recommended by</th><th>Caught by the automated scan</th></tr></thead>
             <tbody>

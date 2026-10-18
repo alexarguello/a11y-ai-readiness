@@ -1,0 +1,12 @@
+{
+  "variant": "inaccessible",
+  "consumer": "screen reader (NVDA)",
+  "completed": false,
+  "confirmationCode": null,
+  "notes": "Using only the keyboard, the task could not even be started: after the filter box, the Tab key jumps straight past the rest of the page, with no way to reach the Register link. Even with a mouse to get into the form, the meal-preference dropdown could never be operated, and the screen reader never announced why the form kept failing to submit.",
+  "actionCount": 8,
+  "actionUnit": "keystrokes",
+  "actionOutcome": "before the Tab key leaves the page entirely: one Tab to the filter box, six characters, and the next Tab lands in the browser’s own toolbar. The filter box is the only control on the page a keyboard can reach",
+  "sampleNote": "1 live run",
+  "actionSource": "Counted from the Speech Viewer transcript for this run (docs/nvda-run-sheet.md), by docs/analyze_nvda.py. NVDA echoes each typed character as its own line, so typed keystrokes are counted directly; navigation and activation keys are counted from the focus announcements between them."
+}

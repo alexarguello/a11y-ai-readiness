@@ -1,0 +1,19 @@
+{
+  "variant" : "accessible",
+  "provider" : "xai",
+  "model" : "grok-4.6",
+  "startedAt" : "2026-09-20T01:26:28.801840100Z",
+  "finishedAt" : "2026-09-20T01:27:16.919570Z",
+  "success" : true,
+  "confirmationCode" : "JCON-3BBB97",
+  "toolCalls" : 12,
+  "maxToolCalls" : 40,
+  "budgetExhausted" : false,
+  "promptTokens" : 32279,
+  "completionTokens" : 220,
+  "totalTokens" : 34431,
+  "estimatedCostUsd" : 0.065878,
+  "finalSnapshotChars" : 321,
+  "finalModelMessage" : "Registration completed for **Building Accessible Forms in Java** as Jordan Lee.\n\nConfirmation code: **JCON-3BBB97**",
+  "actionLog" : [ "navigate /accessible -> ok", "click role=link name=Register for Building Accessible Forms in Java -> ok", "fill label=Full name value=Jordan Lee -> ok", "fill label=Email address value=jordan-not-an-email -> ok", "click role=button name=Complete registration -> ok", "snapshot -> ok", "fill label=Email address value=jordan.lee@example.com -> ok", "selectOption label=Meal preference option=Vegetarian -> ok", "check label=I accept the workshop terms and conditions -> ok", "click role=button name=Complete registration -> ok", "type role=textbox name=Email address value=jordan.lee@example.com -> TOOL ERROR: TimeoutError: Error {\n  message='Timeout 3000ms exceeded.\n  name='TimeoutError\n  stack='TimeoutError: Timeout 3000ms exceeded.\n    at _ProgressController.run (C:\\Users\\ALEXAN~1\\AppData\\Local\\Temp\\playwright-java-4490754078849390450\\package\\lib\\coreBundle.js:12135:32)\n    at DispatcherConnection.dispatch (C:\\Users\\ALEXAN~1\\AppData\\Local\\Temp\\playwright-java-4490754078849390450\\package\\lib\\coreBundle.js:18775:44)\n}\nCall log:\n-   - waiting for getByRole(AriaRole.TEXTBOX, new Page.GetByRoleOptions().setName(\"Email address\"))\n", "selectOption label=Meal preference option=Standard -> TOOL ERROR: TimeoutError: Error {\n  message='Timeout 3000ms exceeded.\n  name='TimeoutError\n  stack='TimeoutError: Timeout 3000ms exceeded.\n    at _ProgressController.run (C:\\Users\\ALEXAN~1\\AppData\\Local\\Temp\\playwright-java-4490754078849390450\\package\\lib\\coreBundle.js:12135:32)\n    at DispatcherConnection.dispatch (C:\\Users\\ALEXAN~1\\AppData\\Local\\Temp\\playwright-java-4490754078849390450\\package\\lib\\coreBundle.js:18775:44)\n}\nCall log:\n-   - waiting for getByLabel(\"Meal preference\")\n" ]
+}

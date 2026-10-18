@@ -1,0 +1,19 @@
+{
+  "variant" : "accessible",
+  "provider" : "anthropic",
+  "model" : "claude-sonnet-5",
+  "startedAt" : "2026-09-20T01:36:40.992117700Z",
+  "finishedAt" : "2026-09-20T01:37:02.311012100Z",
+  "success" : true,
+  "confirmationCode" : "JCON-E8E56E",
+  "toolCalls" : 11,
+  "maxToolCalls" : 40,
+  "budgetExhausted" : false,
+  "promptTokens" : 45236,
+  "completionTokens" : 1295,
+  "totalTokens" : 46531,
+  "estimatedCostUsd" : 0.103422,
+  "finalSnapshotChars" : 321,
+  "finalModelMessage" : "Registration completed successfully.\n\n**Summary:**\n- Attempted submission with malformed email \"jordan-not-an-email\" → the site correctly rejected it with validation errors: \"Enter a valid email address,\" \"Choose a meal preference,\" and \"You must accept the terms to register.\"\n- Corrected the email to \"jordan.lee@example.com\", selected \"Standard\" as the meal preference, and checked the terms and conditions checkbox.\n- Resubmitted, and registration succeeded.\n\n**Confirmation code: JCON-E8E56E**\n\n(Confirmation message: \"Thanks, Jordan Lee. Your registration for Building Accessible Forms in Java is confirmed.\")",
+  "actionLog" : [ "navigate /accessible -> ok", "click role=link name=Register for Building Accessible Forms in Java -> ok", "fill label=Full name value=Jordan Lee -> ok", "fill label=Email address value=jordan-not-an-email -> ok", "click role=button name=Complete registration -> ok", "snapshot -> ok", "fill label=Email address value=jordan.lee@example.com -> ok", "selectOption label=Meal preference option=Standard -> ok", "check label=I accept the workshop terms and conditions -> ok", "click role=button name=Complete registration -> ok", "snapshot -> ok" ]
+}

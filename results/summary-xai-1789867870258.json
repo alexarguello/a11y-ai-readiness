@@ -1,0 +1,33 @@
+{
+  "provider" : "xai",
+  "model" : "grok-4.6",
+  "generatedAt" : "2026-09-20T01:31:10.258025800Z",
+  "perVariant" : {
+    "accessible" : {
+      "runs" : 5,
+      "excludedBudgetExhausted" : 0,
+      "successRate" : 1.0,
+      "medianToolCalls" : 11.0,
+      "minToolCalls" : 11,
+      "maxToolCalls" : 12,
+      "medianTotalTokens" : 36225.0,
+      "minTotalTokens" : 33197,
+      "maxTotalTokens" : 44998,
+      "medianCostUsd" : 0.071242,
+      "totalCostUsd" : 0.361888
+    },
+    "inaccessible" : {
+      "runs" : 5,
+      "excludedBudgetExhausted" : 0,
+      "successRate" : 0.0,
+      "medianToolCalls" : 33.0,
+      "minToolCalls" : 23,
+      "maxToolCalls" : 34,
+      "medianTotalTokens" : 127318.0,
+      "minTotalTokens" : 108366,
+      "maxTotalTokens" : 210279,
+      "medianCostUsd" : 0.246888,
+      "totalCostUsd" : 1.347560
+    }
+  }
+}

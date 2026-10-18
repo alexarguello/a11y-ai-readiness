@@ -1,0 +1,6 @@
+{
+  "variant" : "inaccessible",
+  "page" : "sessions",
+  "url" : "http://localhost:61861/inaccessible",
+  "snapshot" : "- text: JCON Workshops\n- searchbox \"Filter sessions…\"\n- text: Filter Title Speaker Time Format Action Building Accessible Forms in Java A. Rivera Tue 10:00\n- img\n- text: \"Register Spring AI: Building Tool-Calling Agents J. Okafor Tue 13:30\"\n- img\n- text: \"Register Playwright for Java: Role-Based Locators S. Nakamura Wed 09:00\"\n- img\n- text: Register Virtual Threads in Production M. Lindqvist Wed 11:15\n- img\n- text: \"Register Vaadin Components: Accessible by Default P. Dubois Wed 14:00\"\n- img\n- text: Register"
+}
