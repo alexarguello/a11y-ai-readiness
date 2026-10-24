@@ -18,10 +18,9 @@ import java.util.List;
 /**
  * Objective, third-party confirmation of the accessible/inaccessible claim:
  * axe-core -- the same engine behind Lighthouse (built into Edge and Chrome DevTools) and the
- * axe DevTools extension -- audits
- * both variants against real WCAG rules. Unlike VisualParityTest this isn't a pass/fail
- * assertion: each page is graded independently and the counts are committed to results/ as
- * evidence for a slide, not enforced as a build gate.
+ * axe DevTools extension -- audits both variants against real WCAG rules. Unlike
+ * VisualParityTest this isn't a pass/fail assertion: each page is graded independently and the
+ * counts are committed to results/ as evidence, not enforced as a build gate.
  *
  * Audits both the session list AND the registration form per variant: the list page alone
  * (missing landmarks, missing alt text) understates the story, since the more decisive defects --
@@ -29,9 +28,9 @@ import java.util.List;
  * won't catch everything the NVDA/agent runs catch: axe-core grades whether existing markup's
  * semantics are correct, not whether something interactive-looking was marked up with a role at
  * all -- a bare <div onclick> with zero ARIA attempts often isn't flagged, because it isn't
- * attempting to *be* anything axe can grade. That gap is itself worth stating on stage: automated
- * scanning alone under-catches, which is the actual argument for testing with real screen readers
- * and agents rather than trusting a clean axe report.
+ * attempting to *be* anything axe can grade. That gap is the point: automated scanning alone
+ * under-catches, which is the argument for testing with real screen readers and agents rather
+ * than trusting a clean axe report.
  *
  * Loads axe-core from a CDN at test time (the browser fetches it, not this JVM) rather than
  * vendoring it -- unlike the JS actually shipped to /accessible and /inaccessible, this script
