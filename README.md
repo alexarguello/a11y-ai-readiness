@@ -210,3 +210,7 @@ which Playwright downloads on first run. No test calls a paid API.
 selector failing to open a local socket, usually blocked by a firewall, EDR agent, or VPN client.
 Allow `java.exe` through Windows Defender Firewall for private networks, or disable the VPN, and
 retry.
+
+## License
+
+[MIT](LICENSE) — use it, fork it, lift the fixes into your own app. That last one is the point.
