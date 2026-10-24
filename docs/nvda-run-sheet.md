@@ -1,12 +1,96 @@
 # NVDA run sheet
 
-Printable script + scorecard for the screen-reader head-to-head, and for the cold open of the
-talk it was written for. Run this live while recording — the **structural facts** below
-(what's focusable, what has a label, what's silent) are certain from the markup itself; the
-**exact NVDA phrasing** is what NVDA actually says and should be confirmed/corrected against the
-Speech Viewer during the real run, not assumed from this document.
+Three screen-reader runs of one task — register for a workshop — against the two variants,
+captured with NVDA's Speech Viewer on Firefox on 2026-09-20. This file is both the record of what
+happened and the procedure for reproducing it.
 
-## Setup
+Every number below is counted from the verbatim transcripts at the bottom of this file by
+`docs/analyze_nvda.py`, not typed by hand.
+
+**[Results](#results)** · [The three findings](#the-three-findings) ·
+[How the numbers were derived](#how-the-numbers-were-derived) · [Re-running it](#re-running-it) ·
+[Transcripts](#transcripts)
+
+---
+
+## Results
+
+| | A — `/accessible` | B — `/inaccessible`, keyboard | C — `/inaccessible`, mouse + NVDA |
+|---|---|---|---|
+| Task completed | **yes** — code `JCON-C7ED97` | **no** | **no**, even with a mouse |
+| Where it stopped | — | after the filter field; `Tab` leaves the page | silent resubmission loop on meal preference |
+| Validation error announced | **yes** — `role="alert"`, immediately | never reached the form | **no** — but see the email caveat below |
+| Characters typed | 40 | **6** | **54** |
+| `alert` announcements | **2** | 0 | **0** |
+| Meal control heard as a `combo box` | 1 | never reached | **0** |
+| Meal control heard as plain text | 0 | never reached | **5** |
+| "Complete registration" took focus | 1 | **0** | 4 |
+| Form re-rendered after a submit | 2 | 0 | **9** |
+| Recording length | 2:47 | 0:42 | 3:12 |
+
+Recordings are in `docs/`: `NVDA ACCESSIBLE.mp4`, `NVDA INACCESSIBLE keyboard Only.mp4`,
+`NVDA INACCESSIBLE keyboard Mouse.mp4`. The same findings are in `results/nvda-*.json` in the
+structured form the dashboard reads.
+
+---
+
+## The three findings
+
+**B — eight keystrokes, and the page is behind you.** `Tab` lands on the filter field, six
+characters go in, and the next `Tab` lands on "Browser tabs tool bar" — Firefox's own chrome.
+From there focus walks the new-tab button, the navigation toolbar, the sidebar button, the
+search-engine picker, the address bar, the bookmark button and the VPN button. The filter box is
+the only control on the page a keyboard can reach, and there is no ninth keystroke that helps.
+For contrast, A reached a confirmation code in about 60 keystrokes — 40 characters plus roughly
+21 navigation and activation keys.
+
+**C — 54 characters, nine re-renders, nothing said.** With a mouse to get past B's block, this
+run typed 14 more characters than the successful one and drove the form through nine re-renders,
+and NVDA announced `alert` zero times. "Meal preference…" was read five times as plain text and
+never once as a control: the fake dropdown's click-to-open never registered, so the selection
+never took, so the form could never be satisfied — and nothing ever said which field was wrong.
+That is worse than the scripted prediction, which expected three separate observations rather
+than one unbreakable loop.
+
+**The precision worth keeping.** The *email* error on `/inaccessible` **was** announced —
+"invalid entry … Enter a valid email address." That is the browser's own native `type="email"`
+validity leaking through, not the markup: `/inaccessible` never got `aria-invalid`, only
+`/accessible` did. The *meal preference* failure, the one that actually blocked the task, was
+announced never. Said loosely, this becomes an overclaim an informed questioner will catch.
+
+---
+
+## How the numbers were derived
+
+NVDA echoes every typed character as its own line (`r`, `i`, `v`, … plus word-names for
+punctuation: `space`, `at`, `dot`), so the transcripts are keystroke-level.
+
+```bash
+python docs/analyze_nvda.py
+```
+
+It reads the transcripts straight out of this file, so the results table can be re-derived rather
+than remembered. What each run actually typed:
+
+| | Typed |
+|---|---|
+| A | `RIVERA` `JORDAN` `MAL FORMED` `JORDAN@HOTMAIL.COM` |
+| B | `rivera` |
+| C | `Riverssa` `jordan smith` `jordan malformed` `jordan@hotmail.com` |
+
+`results/nvda-transcripts/` holds an independent OCR recovery of the same transcripts, used only
+as a cross-check — see the README there for why it is not the source of truth.
+
+---
+
+## Re-running it
+
+The step tables below are the **planned** scripts. The live runs followed them in structure but
+not character-for-character: the attendee details actually typed are in the table above. The
+structural facts (what is focusable, what has a label, what is silent) are certain from the
+markup; the exact NVDA phrasing should be confirmed against the Speech Viewer on the day.
+
+### Setup
 
 1. Start NVDA.
 2. Open the Speech Viewer so the audience can read what NVDA hears: **NVDA menu (`NVDA+N`) →
@@ -17,9 +101,7 @@ Speech Viewer during the real run, not assumed from this document.
 5. Confirm NVDA is in **Browse Mode** on page load (default). It switches to **Focus Mode**
    automatically on entering a form field — no manual mode-switching needed in this script.
 
----
-
-## Script A — `/accessible`, full task, keyboard only
+### Script A — `/accessible`, full task, keyboard only
 
 **Confirmed against a live NVDA + Firefox run (Speech Viewer transcript).** The whole flow
 completed as scripted, including the decisive step: the async `role="alert"` fired immediately
@@ -38,7 +120,7 @@ recording:
   differ from press-the-first-letter depending on what's focused). Budget 1–2 keypresses for this
   step, not exactly one.
 
-Attendee for this run: **name** "Jordan Lee", **email** (deliberately malformed first)
+Attendee as planned: **name** "Jordan Lee", **email** (deliberately malformed first)
 "jordan-not-an-email", **meal** Vegetarian, **terms** accepted.
 
 | # | Key(s) | Expected NVDA announcement | Notes |
@@ -69,11 +151,47 @@ Attendee for this run: **name** "Jordan Lee", **email** (deliberately malformed 
 | 24 | `Tab` | "Complete registration, button" | |
 | 25 | `Enter` | "You're registered! heading level 1" | Focus lands on the new heading; confirmation code is read on the next line down |
 
-**Keystrokes to completion: 25** (count every row above, including typed-text entries as one
-"action" each — adjust the scorecard's raw keystroke count to actual keys-per-character if you
-want that level of granularity).
+**25 steps**, counting each typed value as one. As individual keypresses that is about 60,
+which is the figure in the results table.
 
-RESULT :
+### Script B — `/inaccessible`, keyboard only
+
+Same task, same order, starting fresh at `http://localhost:8080/inaccessible`.
+
+| # | Key(s) | Expected NVDA announcement | Notes |
+|---|---|---|---|
+| 1 | `Tab` | "edit, blank" — **no field name at all**, or possibly "Filter sessions…, edit" if the browser falls back to using the placeholder text as the accessible name | Chrome/Firefox both implement the HTML-AAM placeholder-as-fallback-name rule, so don't be surprised if NVDA says *something* here — the real failure isn't silence on this one field, it's that the label **disappears the moment you start typing** (placeholder text vanishes on input), unlike `/accessible`'s persistent `<label>` |
+| 2 | Type `Rivera` | (typing echo) | |
+| 3 | `Enter` | page reloads, filtered | The "Filter" control itself is a `<div>` with no button semantics — Enter-to-submit only works because it's still a real `<input>` inside a real `<form>` |
+| 4 | `Tab` | "edit, Rivera" (or similar) | |
+| 5 | `Tab` | **nothing happens — focus leaves the page entirely** (moves to the browser's own UI, e.g. the address bar) | **Task ends here.** The "Filter" control, the "×" clear-filter, and every "Register" action are `<div>`/`<span>` elements with no `tabindex` — there is no keyboard path to registering for a workshop at all. This is the predicted outcome exactly: "task not completable." |
+
+**The task fails at step 5 — not completable.** Blunt enough to need no narration.
+
+### Script C — `/inaccessible`, mouse + NVDA
+
+Script B proves the task is impossible unaided. This pass uses the mouse to get past that block
+on purpose, so the recording shows the *other* failures stacked underneath the first one.
+
+| Action | Expected NVDA announcement | Notes |
+|---|---|---|
+| Click into the "Full name" field | "edit, blank" (placeholder read as name, or nothing) | Same placeholder caveat as above; label still isn't persistent |
+| Tab to the meal-preference control | **Tab skips over it entirely** | The custom dropdown (`.fake-select`) has no `tabindex` on its trigger — even with the mouse used to *get to* this page, the dropdown is still unusable by keyboard. Clicking it with the mouse opens a plain `<div>` list with no `role="listbox"`/`role="option"`, so NVDA announces none of it as a picker at all — just inert text |
+| Click the checkbox, then submit with a malformed email (mouse click on the "Complete registration" div) | **nothing announced** | No `role="alert"`, no live region, no focus movement — the only change is a CSS border-color swap. Confirm on the Speech Viewer that literally nothing prints when this happens; that silence *is* the finding |
+
+---
+
+## Transcripts
+
+Verbatim Speech Viewer output, unedited. These are the source the counts above are derived from,
+collapsed because they are keystroke-level and long.
+
+<details>
+<summary><strong>Script A — /accessible, keyboard only</strong> — verbatim Speech Viewer output, 154 lines</summary>
+
+<!-- transcript:A -->
+
+```text
 Register — Building Accessible Forms in Java — Personal — Mozilla Firefox Private Browsing
 Register — Building Accessible Forms in Java
 banner landmark    breadcrumb  navigation landmark    visited  link    ← Back to sessions
@@ -228,26 +346,16 @@ You're registered!
 Thanks, JORDAN. Your registration for Building Accessible Forms in Java is confirmed.
 Your confirmation code:
 JCON-C7ED97
+```
 
+</details>
 
----
+<details>
+<summary><strong>Script B — /inaccessible, keyboard only</strong> — verbatim Speech Viewer output, 80 lines</summary>
 
-## Script B — `/inaccessible`, keyboard only
+<!-- transcript:B -->
 
-Same task, same order, starting fresh at `http://localhost:8080/inaccessible`.
-
-| # | Key(s) | Expected NVDA announcement | Notes |
-|---|---|---|---|
-| 1 | `Tab` | "edit, blank" — **no field name at all**, or possibly "Filter sessions…, edit" if the browser falls back to using the placeholder text as the accessible name | Chrome/Firefox both implement the HTML-AAM placeholder-as-fallback-name rule, so don't be surprised if NVDA says *something* here — the real failure isn't silence on this one field, it's that the label **disappears the moment you start typing** (placeholder text vanishes on input), unlike `/accessible`'s persistent `<label>` |
-| 2 | Type `Rivera` | (typing echo) | |
-| 3 | `Enter` | page reloads, filtered | The "Filter" control itself is a `<div>` with no button semantics — Enter-to-submit only works because it's still a real `<input>` inside a real `<form>` |
-| 4 | `Tab` | "edit, Rivera" (or similar) | |
-| 5 | `Tab` | **nothing happens — focus leaves the page entirely** (moves to the browser's own UI, e.g. the address bar) | **Task ends here.** The "Filter" control, the "×" clear-filter, and every "Register" action are `<div>`/`<span>` elements with no `tabindex` — there is no keyboard path to registering for a workshop at all. This is the predicted outcome exactly: "task not completable." |
-
-**Keystrokes to completion: task fails at keystroke 5 — not completable.** This is the cold-open
-material: it's fast, it's blunt, and it needs no narration.
-
-Results:
+```text
 Other Bookmarks
 Account
 DesktopWindowXamlSource
@@ -328,26 +436,16 @@ Snipping Tool
 Play  button  Alt,   P    Space
 Capture mode switched
 DesktopWindowXamlSource
+```
 
+</details>
 
+<details>
+<summary><strong>Script C — /inaccessible, mouse + NVDA</strong> — verbatim Speech Viewer output, 173 lines</summary>
 
+<!-- transcript:C -->
 
-
----
-
-## Script C — `/inaccessible`, mouse + NVDA (for narrative depth beyond the hard block)
-
-Script B proves the task is impossible unaided. This pass uses the mouse to get past that block
-specifically so the recording has more than one beat to show in the 3:00–6:00 segment — it
-demonstrates the *other* failures stacked underneath the first one.
-
-| Action | Expected NVDA announcement | Notes |
-|---|---|---|
-| Click into the "Full name" field | "edit, blank" (placeholder read as name, or nothing) | Same placeholder caveat as above; label still isn't persistent |
-| Tab to the meal-preference control | **Tab skips over it entirely** | The custom dropdown (`.fake-select`) has no `tabindex` on its trigger — even with the mouse used to *get to* this page, the dropdown is still unusable by keyboard. Clicking it with the mouse opens a plain `<div>` list with no `role="listbox"`/`role="option"`, so NVDA announces none of it as a picker at all — just inert text |
-| Click the checkbox, then submit with a malformed email (mouse click on the "Complete registration" div) | **nothing announced** | No `role="alert"`, no live region, no focus movement — the only change is a CSS border-color swap. Confirm on the Speech Viewer that literally nothing prints when this happens; that silence *is* the finding |
-
-Result SpeechViewer:
+```text
 /inaccessible
 /inaccessible  visited  link  
 JCON Workshops — inaccessible  busy
@@ -521,82 +619,6 @@ Snipping Tool
 Play  button  Alt,   P    Space
 Capture mode switched
 DesktopWindowXamlSource
+```
 
-
-
----
-
-## Scorecard (confirmed against live Speech Viewer transcripts, 2026-09-20)
-
-| Metric | `/accessible` | `/inaccessible` (keyboard) | `/inaccessible` (mouse + NVDA) |
-|---|---|---|---|
-| Task completes unaided | ✅ yes — confirmation code `JCON-C7ED97` | ❌ **no** | ❌ **no, even with a mouse** |
-| Where it stopped | — | After the filter field — `Tab` moves focus off the page entirely; nothing past that point has a `tabindex` | Stuck in a **silent resubmission loop** on the meal-preference field — see below |
-| Was the validation error announced? | ✅ yes — live `role="alert"` fired immediately | n/a (never reached the form) | **Split result** — see below |
-| Keystrokes | **~60** — 40 characters typed plus ~21 navigation/activation keys | **8** — `Tab`, six characters, `Tab`, and the page is behind you | **54 characters typed**, nine submits, no confirmation |
-| Recording length | 2:47 | 0:42 | 3:12 |
-
-### Counted from the transcripts above, 2026-09-20 (`docs/analyze_nvda.py`)
-
-NVDA echoes every typed character as its own line (`r`, `i`, `v`, … plus word-names for
-punctuation: `space`, `at`, `dot`), so the transcripts pasted under each script are
-keystroke-level. `docs/analyze_nvda.py` reads them straight out of this file and counts, so these
-numbers can be re-derived rather than remembered.
-
-| Measure | A `/accessible` | B `/inaccessible` keyboard | C `/inaccessible` mouse |
-|---|---|---|---|
-| Characters typed | 40 | **6** | **54** |
-| What was typed | `RIVERA` `JORDAN` `MAL FORMED` `JORDAN@HOTMAIL.COM` | `rivera` | `Riverssa` `jordan smith` `jordan malformed` `jordan@hotmail.com` |
-| `alert` announcements | **2** | 0 | **0** |
-| Meal control announced as a `combo box` | **1** | never reached | **0** |
-| Meal control read as plain text | 0 | never reached | **5** |
-| "Complete registration" took focus | 1 | **0** | 4 |
-| Form re-rendered after a submit | 2 | 0 | **9** |
-| Confirmation code | **`JCON-C7ED97`** | none | none |
-
-**Script B, keystroke by keystroke — this is the exact number the talk wants.** `Tab` lands on the
-filter field. Six characters go in. The next `Tab` lands on **"Browser tabs tool bar"** — Firefox's
-own chrome — and from there it walks the new-tab button, the navigation toolbar, the sidebar
-button, the search-engine picker, the address bar, the bookmark button, the VPN button and the
-bookmarks bar. **Eight keystrokes, and the only control on the page a keyboard can reach is the
-filter box.** There is no ninth keystroke that helps.
-
-**Script A, for the contrast:** 40 characters plus roughly 21 navigation and activation keys —
-about **60 keystrokes to a confirmation code**. Call it "about sixty" on stage; two of the submits
-could have been `Enter` in the field rather than `Tab` then `Enter`, and the transcript does not
-distinguish them.
-
-**Script C is the cruellest number on this page.** Mouse in hand, the user typed **54 characters**
-and drove the form through **nine re-renders** — nine times the page came back — and NVDA
-announced **`alert` zero times**. Forty more characters typed than the successful run, and not one
-word of explanation. Meanwhile "Meal preference…" was read **five times as plain text** and never
-once as a control, which is why the form could never be satisfied.
-
-**One precision to keep on stage.** The *email* error on `/inaccessible` **was** announced
-("invalid entry") — that is the browser's own native `type="email"` validity leaking through, not
-anything in the markup. The *meal preference* failure, the one that actually blocked the task, was
-announced never. Say it that way; an informed questioner will otherwise catch the overclaim.
-
-
-**Script C's real finding is better than what was scripted.** The scripted version predicted three
-separate observations (placeholder-as-name, dropdown untouchable, silent color-only error). What
-actually happened was more damning: the run got stuck in a genuine **resubmission loop** — email
-was corrected, checkbox was checked, "Complete registration" was clicked repeatedly, and every
-time the page silently re-rendered the same form because the meal preference was never
-successfully selected (the fake dropdown's click-to-open interaction never registered), with
-**zero announcement of which field was still wrong**. Compare the two errors side by side:
-
-- **Email**: `"Email address edit invalid entry ... Enter a valid email address."` — this *was*
-  announced. Not because of anything we built — `/inaccessible` never got `aria-invalid` (only
-  `/accessible` did) — this is the browser's own native validity state for `type="email"` leaking
-  through regardless of `aria-invalid` or `novalidate`. Worth stating precisely on stage: this one
-  signal survived *despite* the broken markup, not because of it.
-- **Meal preference**: nothing. Ever. Across multiple resubmit attempts, a sighted mouse user
-  following along with NVDA running would have no way to learn why the form keeps rejecting them.
-  This is the decisive step landing exactly as designed, captured live rather than staged —
-  arguably a stronger clip for the talk than the scripted version.
-
-Numeric keystroke/time counts weren't tracked live (attention was on following the script) but are
-recoverable from the three recordings in `docs/` — `NVDA ACCESSIBLE.mp4`,
-`NVDA INACCESSIBLE keyboard Only.mp4`, `NVDA INACCESSIBLE keyboard Mouse.mp4`. Pull those before
-this goes on a slide — generated, not estimated.
+</details>

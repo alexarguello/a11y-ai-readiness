@@ -1,9 +1,11 @@
 """Count what the three NVDA runs actually did, from their Speech Viewer transcripts.
 
-The transcripts are pasted verbatim into docs/nvda-run-sheet.md under each
-script. NVDA echoes every typed character as its own line ("r", "i", "v", …,
-plus word-names for punctuation: "space", "at", "dot"), so the transcripts are
-keystroke-level for typing, and announce each control as it takes focus.
+The transcripts live verbatim in docs/nvda-run-sheet.md, each in a fenced block
+tagged with an HTML comment (<!-- transcript:A -->) so this script finds them
+regardless of how the prose around them is edited. NVDA echoes every typed
+character as its own line ("r", "i", "v", …, plus word-names for punctuation:
+"space", "at", "dot"), so the transcripts are keystroke-level for typing, and
+announce each control as it takes focus.
 
     python docs/analyze_nvda.py
 
@@ -31,20 +33,22 @@ RECORDER = re.compile(
     r"Stop recording|System audio|Play  button)")
 
 SCRIPTS = {
-    "A  /accessible, keyboard only": "RESULT :",
-    "B  /inaccessible, keyboard only": "Results:",
-    "C  /inaccessible, mouse + NVDA": "Result SpeechViewer:",
+    "A  /accessible, keyboard only": "A",
+    "B  /inaccessible, keyboard only": "B",
+    "C  /inaccessible, mouse + NVDA": "C",
 }
 
 
 def block(lines, marker):
-    """The transcript pasted after `marker`, up to the next heading or rule."""
-    start = next(i for i, l in enumerate(lines) if l.strip() == marker) + 1
-    end = len(lines)
-    for j in range(start, len(lines)):
-        if lines[j].startswith("## ") or lines[j].startswith("---"):
-            end = j
-            break
+    """The fenced transcript following `<!-- transcript:MARKER -->`."""
+    tag = "<!-- transcript:%s -->" % marker
+    start = next(i for i, l in enumerate(lines) if l.strip() == tag)
+    while not lines[start].strip().startswith("```"):
+        start += 1
+    start += 1
+    end = start
+    while not lines[end].strip().startswith("```"):
+        end += 1
     return [l.strip() for l in lines[start:end] if l.strip() and not RECORDER.match(l.strip())]
 
 
