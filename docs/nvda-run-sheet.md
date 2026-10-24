@@ -1,7 +1,7 @@
-# NVDA run sheet — task 5 (docs/PLAN.md)
+# NVDA run sheet
 
-Printable script + scorecard for the screen-reader head-to-head (beat sheet §8, 3:00–6:00) and
-the cold open (§8, 0:00–1:30). Run this live while recording — the **structural facts** below
+Printable script + scorecard for the screen-reader head-to-head, and for the cold open of the
+talk it was written for. Run this live while recording — the **structural facts** below
 (what's focusable, what has a label, what's silent) are certain from the markup itself; the
 **exact NVDA phrasing** is what NVDA actually says and should be confirmed/corrected against the
 Speech Viewer during the real run, not assumed from this document.
@@ -10,7 +10,7 @@ Speech Viewer during the real run, not assumed from this document.
 
 1. Start NVDA.
 2. Open the Speech Viewer so the audience can read what NVDA hears: **NVDA menu (`NVDA+N`) →
-   Tools → Speech Viewer.** Dock/position it as its own OBS panel per §8's recording setup.
+   Tools → Speech Viewer.** Dock/position it as its own OBS panel.
 3. Open Chrome (or Firefox) fresh, no browsing history/autofill that could pre-fill the form —
    use a clean/incognito window.
 4. Navigate to `http://localhost:8080/accessible`.
@@ -49,19 +49,19 @@ Attendee for this run: **name** "Jordan Lee", **email** (deliberately malformed 
 | 4 | `Tab` | "Filter sessions, edit, Rivera" | |
 | 5 | `Tab` | "Filter, button" | |
 | 6 | `Tab` | "Clear filter, link" | Only present because a filter is active |
-| 7 | `Tab` | "Register for Building Accessible Forms in Java, link" | Full context in the *announced* name even though the visible text just says "Register" — see §4 |
+| 7 | `Tab` | "Register for Building Accessible Forms in Java, link" | Full context in the *announced* name even though the visible text just says "Register" |
 | 8 | `Enter` | "Register: Building Accessible Forms in Java, heading level 1" | |
 | 9 | `Tab` | "Back to sessions, link" | Inside a `<nav>` landmark |
 | 10 | `Tab` | "Full name, edit, blank" | |
 | 11 | Type `Jordan Lee` | (typing echo) | |
 | 12 | `Tab` | "Email address, edit, blank" | |
-| 13 | Type `jordan-not-an-email` | (typing echo) | Deliberately malformed (§3.4) — `novalidate` on the form means the browser won't intercept this before our own validation sees it |
+| 13 | Type `jordan-not-an-email` | (typing echo) | Deliberately malformed — `novalidate` on the form means the browser won't intercept this before our own validation sees it |
 | 14 | `Tab` | "Meal preference, combo box, Choose one…" | |
 | 15 | Press `V` | "Vegetarian" | First-letter navigation in a native `<select>` |
 | 16 | `Tab` | "I accept the workshop terms and conditions, checkbox, not checked" | |
 | 17 | `Space` | "checked" | |
 | 18 | `Tab` | "Complete registration, button" | |
-| 19 | `Enter` | **"There's a problem with your registration. Please fix the highlighted fields below. Alert"** | This is the decisive moment (§3.4) — an async fetch swap, not a page reload, so this is a genuine live-region announcement, and JS also moves focus onto the alert directly |
+| 19 | `Enter` | **"There's a problem with your registration. Please fix the highlighted fields below. Alert"** | This is the decisive moment — an async fetch swap, not a page reload, so this is a genuine live-region announcement, and JS also moves focus onto the alert directly |
 | 20 | `Tab` | "Full name, edit, Jordan Lee" | Values are retained |
 | 21 | `Tab` | "Email address, edit, invalid entry, jordan-not-an-email, Enter a valid email address" | `aria-invalid` + `aria-describedby` both fire here |
 | 22 | Select-all + type `jordan.lee@example.com` | (typing echo) | Corrects the error |
@@ -242,10 +242,10 @@ Same task, same order, starting fresh at `http://localhost:8080/inaccessible`.
 | 2 | Type `Rivera` | (typing echo) | |
 | 3 | `Enter` | page reloads, filtered | The "Filter" control itself is a `<div>` with no button semantics — Enter-to-submit only works because it's still a real `<input>` inside a real `<form>` |
 | 4 | `Tab` | "edit, Rivera" (or similar) | |
-| 5 | `Tab` | **nothing happens — focus leaves the page entirely** (moves to the browser's own UI, e.g. the address bar) | **Task ends here.** The "Filter" control, the "×" clear-filter, and every "Register" action are `<div>`/`<span>` elements with no `tabindex` — there is no keyboard path to registering for a workshop at all. This matches §9's expected outcome exactly: "task not completable." |
+| 5 | `Tab` | **nothing happens — focus leaves the page entirely** (moves to the browser's own UI, e.g. the address bar) | **Task ends here.** The "Filter" control, the "×" clear-filter, and every "Register" action are `<div>`/`<span>` elements with no `tabindex` — there is no keyboard path to registering for a workshop at all. This is the predicted outcome exactly: "task not completable." |
 
 **Keystrokes to completion: task fails at keystroke 5 — not completable.** This is the cold-open
-material (§8, 0:00–1:30): it's fast, it's blunt, and it needs no narration.
+material: it's fast, it's blunt, and it needs no narration.
 
 Results:
 Other Bookmarks
@@ -541,7 +541,7 @@ DesktopWindowXamlSource
 NVDA echoes every typed character as its own line (`r`, `i`, `v`, … plus word-names for
 punctuation: `space`, `at`, `dot`), so the transcripts pasted under each script are
 keystroke-level. `docs/analyze_nvda.py` reads them straight out of this file and counts, so these
-numbers can be re-derived rather than remembered (§6.8).
+numbers can be re-derived rather than remembered.
 
 | Measure | A `/accessible` | B `/inaccessible` keyboard | C `/inaccessible` mouse |
 |---|---|---|---|
@@ -593,10 +593,10 @@ successfully selected (the fake dropdown's click-to-open interaction never regis
   signal survived *despite* the broken markup, not because of it.
 - **Meal preference**: nothing. Ever. Across multiple resubmit attempts, a sighted mouse user
   following along with NVDA running would have no way to learn why the form keeps rejecting them.
-  This is the "decisive step" (§3.4) landing exactly as designed, captured live rather than
-  staged — arguably a stronger clip for the beat sheet than the scripted version.
+  This is the decisive step landing exactly as designed, captured live rather than staged —
+  arguably a stronger clip for the talk than the scripted version.
 
 Numeric keystroke/time counts weren't tracked live (attention was on following the script) but are
 recoverable from the three recordings in `docs/` — `NVDA ACCESSIBLE.mp4`,
 `NVDA INACCESSIBLE keyboard Only.mp4`, `NVDA INACCESSIBLE keyboard Mouse.mp4`. Pull those before
-this goes on a slide per §6.8 (generated, not estimated).
+this goes on a slide — generated, not estimated.

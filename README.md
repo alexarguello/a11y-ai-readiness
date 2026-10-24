@@ -19,34 +19,60 @@ AI-ready" project. It's the same work, and it's already in your backlog as an ac
 
 ## What it costs when you get it wrong
 
-One agent run per variant, same model, same prompt, same task:
+Two vendors' models, same prompt, same task, five runs per variant each — medians:
 
-| | `/accessible` | `/inaccessible` |
-|---|---|---|
-| Completed the task | **yes** | **no** |
-| Tool calls | 11 | 28 |
-| Failed tool calls | 0 | 20 |
-| Tokens | 32.8k | 71.1k |
-| Cost | $0.065 | $0.130 |
+| Provider | Variant | Success | Tool calls | Tokens | Cost/run |
+|---|---|---|---|---|---|
+| Grok `grok-4.6` | `/accessible` | 100% | 11 | 36k | $0.071 |
+| Grok `grok-4.6` | `/inaccessible` | **0%** | 33 | 127k | $0.247 |
+| Claude `claude-sonnet-5` | `/accessible` | 100% | 11 | 47k | $0.104 |
+| Claude `claude-sonnet-5` | `/inaccessible` | **0%** | 3 | 11k | $0.027 |
 
-Read across that row and the business case writes itself:
+Both vendors complete `/accessible` 5/5 and fail `/inaccessible` 5/5. They were tested
+separately, so this isn't one model's quirk.
 
-- **The task failed.** Not "was slower" — the agent never obtained a confirmation code. If that
+Note the two shapes of failure. Grok kept hunting — 3× the calls, 3.5× the tokens, 3.5× the cost,
+and still no confirmation code. Claude recognised there was no reachable control and gave up after
+three calls. **Cheap is not good news here: the transaction is lost either way.**
+
+Read across those rows and the business case writes itself:
+
+- **The task failed.** Not "was slower" — neither agent ever obtained a confirmation code. If that
   flow were a checkout, a booking, or a claim submission, it's a lost transaction. As agent-driven
   traffic grows, an inaccessible UI is one a customer's agent cannot buy from.
-- **2× the cost for worse results.** The agent burns tokens guessing: 20 of its 28 actions failed
-  because it was hunting for controls that expose no role or name. You pay per token for that
-  guessing, on every run, forever.
+- **You pay more for worse, or you pay less for nothing.** Where the model keeps trying, it burns
+  tokens guessing at controls that expose no role or name, and you pay for that guessing on every
+  run, forever. Where it quits early, the bill is small and the outcome is still a failure.
 - **Your test suite pays the same tax.** Missing semantics are exactly what forces
   `div:nth-child(4) > span` selectors instead of `getByRole`. Those break on every refactor. If
   your Playwright locators are brittle, that's a symptom, not bad luck.
 - **You already owed this work.** Every fix here — a real `<button>`, a `<label for>`, a
   `role="alert"` on the error — is a WCAG requirement. The agent benefit is free.
 
-**Read these numbers as directional, not settled.** One run per variant is an anecdote: LLM runs
-vary, and a multi-run pass reporting medians isn't done yet. The committed results in `results/`
-also predate two harness fixes (a submittable form on the broken variant, and role-based typing),
-so they will move. Treat the mechanism as the finding; treat the digits as provisional.
+These come from `results/summary-*.json`. Per-run detail (tool calls, tokens, cost, the full
+action log) is one file per run in `results/`, and `results/dashboard.html` renders all of it.
+Runs that hit the tool-call cap are flagged `budgetExhausted` and excluded from the summaries as
+spoiled data — five such runs are kept in `results/` rather than deleted, so the exclusion is
+auditable.
+
+## The screen reader says the same thing
+
+The same task was run by hand with **NVDA** on Firefox, three scripts, recorded with the Speech
+Viewer. Verbatim transcripts and a scorecard are in
+[`docs/nvda-run-sheet.md`](docs/nvda-run-sheet.md); the counts in it are derived from those
+transcripts by a script rather than remembered.
+
+| | `/accessible` | `/inaccessible` (keyboard) | `/inaccessible` (mouse + NVDA) |
+|---|---|---|---|
+| Task completed | yes — confirmation code `JCON-C7ED97` | **no** | **no, even with a mouse** |
+| Where it stopped | — | After the filter field — `Tab` moves focus off the page entirely | Silent resubmission loop on the meal-preference field |
+| Validation error announced | yes — `role="alert"` fired immediately | never reached the form | **never announced** |
+
+On `/inaccessible` the task could not even be *started* by keyboard: the filter box is the only
+reachable control. That is the same defect the agents hit, reported by a different consumer.
+
+`results/nvda-*.json` carries those findings in the same structured form as the agent and axe-core
+results, so the dashboard's pass/fail matrix covers all three consumers.
 
 ## The two variants
 
@@ -116,20 +142,19 @@ default). Both providers' clients are always wired up; only the one you pick for
 actually gets called. Each run writes one `results/*.json` (tool calls, tokens, estimated cost,
 the action log, the confirmation code if it got one) and exits.
 
-### Multi-run pass (task 8)
+### Multi-run pass
 
 Add `--runs=N` to run both variants N times each instead of a single one-off attempt, in an
-alternating A-B-B-A order (docs/PLAN.md §6.6) so neither variant systematically benefits from
-running first or last:
+alternating A-B-B-A order so neither variant systematically benefits from running first or last:
 
 ```bash
 ./mvnw spring-boot:run -Dspring-boot.run.arguments="--agent.run=true --runs=5 --provider=xai"
 ```
 
-`--variant` is ignored in this mode (both run). This makes 2×N real API calls in one process —
-based on single-run costs observed so far (roughly $0.04–$0.13 per run), N=5 (10 total calls) is
-in the neighborhood of **$0.50–$1.50 per provider**, not a fixed number — watch the console as it
-runs rather than assuming. Writes one `results/*.json` per run plus one
+`--variant` is ignored in this mode (both run). This makes 2×N real API calls in one process. The
+committed passes cost **$1.71 for Grok and $0.69 for Claude** at N=5 — read that as an order of
+magnitude, not a quote, since the broken variant's cost is driven by how long a given model keeps
+trying before it gives up. Watch the console as it runs. Writes one `results/*.json` per run plus one
 `results/summary-<provider>-*.json` with medians and ranges per variant (runs that hit the
 tool-call budget cap are excluded from the summary as spoiled data — the model was cut off, not
 finished). Run each provider separately, same as single runs.
@@ -158,13 +183,26 @@ src/main/java/com/a11y/a11y_ai_readiness/
 ├── web/           SessionController (both variants), HomeController
 ├── session/       WorkshopSession, SessionRepository (in-memory sample data)
 ├── registration/  RegistrationForm, MealPreference
-└── agent/         AgentRunner, RegistrationAgentTools, ModelPricing
+└── agent/         AgentRunner, RegistrationAgentTools, ModelPricing,
+                  AgentRunResult, SingleAgentRun, RunStats, MultiRunSummary
 
 src/main/resources/
 ├── templates/accessible/     sessions.html, register.html, confirmation.html
 ├── templates/inaccessible/   sessions.html, register.html, confirmation.html
 └── static/                   css/main.css (shared by both), js/, img/
+
+src/test/java/com/a11y/a11y_ai_readiness/
+├── parity/     VisualParityTest, ScreenshotDiff   → pixel parity of the session list
+├── axe/        AxeBaselineTest                     → results/axe-*.json
+├── snapshot/   AccessibilityTreeSnapshotTest       → results/accessibility-tree-*.json
+└── dashboard/  DashboardGeneratorTest              → results/dashboard.html
+
+docs/      nvda-run-sheet.md (verbatim NVDA transcripts + scorecard), screen recordings
+results/   every measurement this README cites, plus the generated dashboard
 ```
+
+`./mvnw test` runs the parity, axe-core, snapshot and dashboard tests. They drive a real browser,
+which Playwright downloads on first run. No test calls a paid API.
 
 ## Troubleshooting: server won't start (Windows)
 

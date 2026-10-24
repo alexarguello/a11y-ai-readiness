@@ -16,7 +16,7 @@ import java.nio.file.Path;
 import java.util.List;
 
 /**
- * Objective, third-party confirmation of the accessible/inaccessible claim (docs/PLAN.md task 7):
+ * Objective, third-party confirmation of the accessible/inaccessible claim:
  * axe-core -- the same engine behind Lighthouse (built into Edge and Chrome DevTools) and the
  * axe DevTools extension -- audits
  * both variants against real WCAG rules. Unlike VisualParityTest this isn't a pass/fail
@@ -25,7 +25,7 @@ import java.util.List;
  *
  * Audits both the session list AND the registration form per variant: the list page alone
  * (missing landmarks, missing alt text) understates the story, since the more decisive defects --
- * unlabeled form fields -- live on the form (docs/PLAN.md §3's "decisive step"). Note this still
+ * unlabeled form fields -- live on the form, the decisive step of the task. Note this still
  * won't catch everything the NVDA/agent runs catch: axe-core grades whether existing markup's
  * semantics are correct, not whether something interactive-looking was marked up with a role at
  * all -- a bare <div onclick> with zero ARIA attempts often isn't flagged, because it isn't

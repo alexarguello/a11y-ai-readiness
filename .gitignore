@@ -52,3 +52,16 @@ recordings/
 # Only the trimmed cuts in docs/ are committed; keep originals local.
 docs/ORIG*.mp4
 docs/__pycache__/
+
+# Private talk material — conference logistics and personal delivery notes.
+# Explicitly ignored so a stray `git add .` can never publish them.
+docs/TALK-TODO.md
+docs/SPEAKING-GUIDE.md
+
+# Slide sources and exported slide images: ~124MB of binaries, and the deck
+# is distributed by the conference, not from here.
+docs/slide-assets/
+
+# Office lock/backup files
+~$*
+*.bk

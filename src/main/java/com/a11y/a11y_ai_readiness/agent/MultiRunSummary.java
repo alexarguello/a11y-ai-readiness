@@ -5,8 +5,8 @@ import java.time.Instant;
 import java.util.Map;
 
 /**
- * Per-variant medians and spread across a multi-run pass (docs/PLAN.md §6.6) -- never a single
- * lucky run. Written to results/summary-*.json alongside the individual run files it summarizes.
+ * Per-variant medians and spread across a multi-run pass -- never a single lucky run. Written to
+ * results/summary-*.json alongside the individual run files it summarizes.
  */
 record MultiRunSummary(
         String provider,

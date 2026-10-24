@@ -14,7 +14,7 @@ import java.util.List;
 
 /**
  * One agent attempt at the registration task, start to finish, against a fresh browser context.
- * Extracted so the single-run CLI path and the multi-run pass (task 8) share one implementation
+ * Extracted so the single-run CLI path and the multi-run pass share one implementation
  * rather than drifting apart.
  */
 final class SingleAgentRun {

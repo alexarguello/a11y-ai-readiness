@@ -9,7 +9,7 @@ import java.util.Map;
 import java.util.Objects;
 
 /**
- * Aggregates a batch of AgentRunResults into medians/ranges per variant (docs/PLAN.md §6.6).
+ * Aggregates a batch of AgentRunResults into medians/ranges per variant.
  * Runs that hit the tool-call budget are excluded: the model was cut off rather than deciding it
  * was finished, so its numbers describe the cap, not the task -- spoiled data (see
  * RegistrationAgentTools.budgetExhausted()).

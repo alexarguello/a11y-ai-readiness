@@ -20,16 +20,16 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Explicitly-triggered "runnable agent" (docs/PLAN.md tasks 6 and 8): drives one attempt, or a
- * full multi-run pass, at the registration task against the app's own already-started embedded
- * server. Never runs during normal `./mvnw spring-boot:run` or `mvn test` -- only when launched
+ * Explicitly-triggered "runnable agent": drives one attempt, or a full multi-run pass, at the
+ * registration task against the app's own already-started embedded server. Never runs during
+ * normal `./mvnw spring-boot:run` or `mvn test` -- only when launched
  * with --agent.run=true, so it never fires (or spends API credit) by accident.
  *
- * Single run (task 6):
+ * Single run:
  *   --agent.run=true --variant=accessible --provider=anthropic
  *
- * Multi-run (task 8) -- both variants, N runs each, alternating A-B-B-A order (docs/PLAN.md
- * §6.6) so nothing systematically benefits from running first or last:
+ * Multi-run -- both variants, N runs each, alternating A-B-B-A order so nothing systematically
+ * benefits from running first or last:
  *   --agent.run=true --runs=5 --provider=xai
  */
 @Component
@@ -125,8 +125,8 @@ class AgentRunner implements ApplicationRunner {
     }
 
     /**
-     * A-B-B-A repeating order (docs/PLAN.md §6.6) so nothing systematically benefits from always
-     * running first or last; N of each variant across 2N total runs.
+     * A-B-B-A repeating order so nothing systematically benefits from always running first or
+     * last; N of each variant across 2N total runs.
      */
     static List<String> alternatingSequence(int runsPerVariant) {
         String[] block = {"accessible", "inaccessible", "inaccessible", "accessible"};
