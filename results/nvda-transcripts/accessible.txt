@@ -1,0 +1,679 @@
+   1s | Selection area changed dimensions to 985 by 1696 pixels.
+   1s | Selection area changed dimensions to 985 by 1699 pixels.
+   1s | Selection area changed dimensions to 988 by 1701 pixels.
+   1s | Selection area changed dimensions to 988 by 1706 pixels.
+   1s | Selection area changed dimensions to 990 by 1709 pixels.
+   1s | Selection area changed dimensions to 990 by 1714 pixels.
+   1s | Selection area changed dimensions to 993 by 1716 pixels.
+   1s | Selection area changed dimensions to 995 by 1719 pixels.
+   1s | panel
+   1s | Selection area changed dimensions to 995 by 1721 pixels.
+   1s | Selection area changed dimensions to 995 by 1722 pixels.
+   1s | Selection area changed dimensions to 998 by 1726 pixels.
+   1s | Selection area changed dimensions to 998 by 1727 pixels.
+   1s | Selection area changed dimensions to 999 by 1731 pixels.
+   1s | Selection area changed dimensions to 1000 by 1731 pixels.
+   1s | DesktopWindowXamlSource
+   1s | Selection area changed dimensions to 1000 by 1734 pixels.
+   1s | Selection area changed dimensions to 1001 by 1739 pixels.
+   1s | Selection area changed dimensions to 1001 by 1741 pixels.
+   1s | Selection area changed dimensions to 1004 by 1742 pixels.
+   1s | Selection area changed dimensions to 1005 by 1744 pixels.
+   1s | Selection area changed dimensions to 1005 by 1746 pixels.
+   1s | Selection area changed dimensions to 1006 by 1746 pixels.
+   1s | Selection area changed dimensions to 1008 by 1746 pixels.
+   1s | Selection area changed dimensions to 1010 by 1746 pixels.
+   1s | Selection area changed dimensions to 1011 by 1746 pixels.
+   1s | Selection area changed dimensions to 1014 by 1746 pixels.
+   1s | Selection area changed dimensions to 1015 by 1746 pixels.
+   1s | Selection area changed dimensions to 1016 by 1746 pixels.
+   1s | Selection area changed dimensions to 1018 by 1746 pixels.
+   1s | Selection area changed dimensions to 1019 by 1746 pixels.
+   1s | Selection area changed dimensions to 1020 by 1746 pixels.
+   1s | Selection area changed dimensions to 1021 by 1746 pixels.
+   1s | Selection area changed dimensions to 1024 by 1746 pixels.
+   1s | Selection area changed dimensions to 1025 by 1746 pixels.
+   1s | Selection area changed dimensions to 1025 by 1747 pixels.
+   1s | Selection area changed dimensions to 1023 by 1747 pixels.
+   1s | Selection area changed dimensions to 1023 by 1746 pixels.
+   1s | DesktopWindowXamlSource
+   1s | Start recording button
+   1s | al ly-ai-readiness — Personal — Mozilla Firefox Private Browsing
+   1s | System audio unmuted. Select to mute system audio. button
+   1s | DesktopWindowXamlSource
+   1s | Extensions
+   1s | Other Bookmarks
+   2s | — same task, div/span soup instead
+   2s | /accessible
+   3s | al ly-ai-readiness — Personal — Mozilla Firefox Private Browsing
+   3s | al ly-ai-readiness document
+   3s | • visited link /accessible
+   3s | — real semantics: button, label, select,
+   3s | /accessible visited link
+   3s | JCON Workshops — accessible
+   3s | main landmark table with 6 rows and 5 columns row 2 Action column 5 visited link
+   3s | for Building Accessible Forms in Java
+   3s | row 3 Title column 1 Spring Al: Building Tool-Calling Agents
+   3s | Speaker column 2 J.
+   3s | Register visited link
+  12s | main landmark JCON workshop sessions table with 6 rows and 5 columns row 3 Action column 5 Register for
+  12s | Spring Al: Building Tool-Calling Agents link
+  14s | row 4 Register for Playwright for Java: Role-Based Locators link
+  14s | row 5 Register for Virtual Threads in Production link
+  14s | row 6 Register for Vaadin Components: Accessible by Default visited link
+  16s | Browser tabs tool bar
+  16s | tab control
+  16s | JCON Workshops — accessible tab selected 1 of 1 level 1
+  16s | Open a new tab (Ctrl+T) button 2 of 2
+  17s | Navigation tool bar
+  17s | Sidebars button Show sidebar (Alt+Ctrl+Z) 1 of 4
+  17s | Pick a Search Engine button collapsed subMenu Google, pick a search engine
+  17s | Search with Google or enter address combo box collapsed has auto complete editable selected
+  17s | http://localhost:8080/accessible
+  18s | Bookmark this page (Ctrl+D) button
+  18s | VPN button 1 of 5
+  19s | Bookmarks tool bar
+  19s | TV button subMenu 1 of 8
+  19s | JCON Workshops — accessible document
+  19s | visited link Register
+  19s | JCON Workshops — accessible document
+  19s | main landmark
+  19s | Filter sessions edit has auto complete e.g. accessible, Spring Al, Rivera blank
+  31s | Filter button
+  35s | JCON Workshops — accessible
+  35s | banner landmark heading level 1 JCON Workshops
+  35s | main landmark clickable Filter sessions
+  35s | edit has auto complete RIVERA
+  35s | button Filter
+  35s | visited link Clear filter
+  35s | table with 2 rows and 5 columns caption
+  35s | row 1 column 1 Title
+  35s | column 2 Speaker
+  35s | column 3 Time
+  35s | column 4 Format
+  35s | JCON workshop sessions out of caption
+  39s | row 3 Title column 1 Spring Al: Building Tool-Calling Agents
+  39s | Speaker column 2 J.
+  39s | main landmark JCON workshop sessions table with 6 rows and 5 columns row 3 Action column 5 Register for
+  39s | Spring Al: Building Tool-Calling Agents link
+  39s | row 4 Register for Playwright for Java: Role-Based Locators link
+  39s | row 5 Register for Virtual Threads in Production link
+  39s | row 6 Register for Vaadin Components: Accessible by Default visited link
+  39s | Browser tabs tool bar
+  39s | tab control
+  39s | JCON Workshops — accessible tab selected 1 of 1 level 1
+  39s | Open a new tab (Ctrl+T) button 2 of 2
+  39s | Navigation tool bar
+  39s | Sidebars button Show sidebar (Alt+Ctrl+Z) 1 of 4
+  39s | Pick a Search Engine button collapsed subMenu Google, pick a search engine
+  39s | Search with Google or enter address combo box collapsed has auto complete editable selected
+  39s | http://localhost:8080/accessible
+  39s | Bookmark this page (Ctrl+D) button
+  39s | VPN button 1 of 5
+  39s | Bookmarks tool bar
+  39s | TV button subMenu 1 of 8
+  39s | JCON Workshops — accessible document
+  39s | visited link Register
+  39s | JCON Workshops — accessible document
+  39s | main landmark
+  39s | Filter sessions edit has auto complete e.g. accessible, Spring Al, Rivera blank
+  39s | Filter button
+  39s | JCON Workshops — accessible
+  39s | banner landmark heading level 1 JCON Workshops
+  39s | main landmark clickable Filter sessions
+  39s | edit has auto complete RIVERA
+  39s | button Filter
+  39s | visited link Clear filter
+  39s | table with 2 rows and 5 columns caption
+  39s | row 1 column 1 Title
+  39s | column 2 Speaker
+  39s | column 3 Time
+  39s | column 4 Format
+  39s | main landmark
+  39s | JCON workshop sessions out of caption
+  39s | Filter sessions edit has auto complete RIVERA
+  40s | Speaker column 2 J.
+  40s | main landmark JCON workshop sessions
+  40s | table with 6 rows and 5 columns row 3 Action column 5 Register for
+  40s | Spring Al: Building Tool-Calling Agents link
+  40s | row 4 Register for Playwright for Java: Role-Based Locators link
+  40s | row 5 Register for Virtual Threads in Production link
+  40s | row 6 Register for Vaadin Components: Accessible by Default visited link
+  40s | Browser tabs tool bar
+  40s | tab control
+  40s | JCON Workshops — accessible tab selected 1 of 1 level 1
+  40s | Open a new tab (Ctrl+T) button 2 of 2
+  40s | Navigation tool bar
+  40s | Sidebars button Show sidebar (Alt+Ctrl+Z) 1 of 4
+  40s | Pick a Search Engine button collapsed subMenu Google, pick a search engine
+  40s | Search with Google or enter address combo box collapsed has auto complete editable selected
+  40s | http://localhost:8080/accessible
+  40s | Bookmark this page (Ctrl+D) button
+  40s | VPN button 1 of 5
+  40s | Bookmarks tool bar
+  40s | TV button subMenu 1 of 8
+  40s | JCON Workshops — accessible document
+  40s | visited link Register
+  40s | JCON Workshops — accessible document
+  40s | main landmark
+  40s | Filter sessions edit has auto complete e.g. accessible, Spring Al, Rivera blank
+  40s | Filter button
+  40s | JCON Workshops — accessible
+  40s | banner landmark heading level 1 JCON Workshops
+  40s | main landmark clickable Filter sessions
+  40s | edit has auto complete RIVERA
+  40s | button Filter
+  40s | visited link Clear filter
+  40s | table with 2 rows and 5 columns caption
+  40s | row 1 column 1 Title
+  40s | column 2 Speaker
+  40s | column 3 Time
+  40s | column 4 Format
+  40s | main landmark
+  40s | JCON workshop sessions out of caption
+  40s | Filter sessions edit has auto complete RIVERA
+  40s | Filter button
+  44s | main landmark JCON workshop sessions table with 6 rows and 5 columns row 3 Action column 5 Register for
+  44s | Spring Al: Building Tool-Calling Agents link
+  44s | row 4 Register for Playwright for Java: Role-Based Locators link
+  44s | row 5 Register for Virtual Threads in Production link
+  44s | row 6 Register for Vaadin Components: Accessible by Default visited link
+  44s | Browser tabs tool bar
+  44s | tab control
+  44s | JCON Workshops — accessible tab selected 1 of 1 level 1
+  44s | Open a new tab (Ctrl+T) button 2 of 2
+  44s | Navigation tool bar
+  44s | Sidebars button Show sidebar (Alt+Ctrl+Z) 1 of 4
+  44s | Pick a Search Engine button collapsed subMenu Google, pick a search engine
+  44s | Search with Google or enter address combo box collapsed has auto complete editable selected
+  44s | http://localhost:8080/accessible
+  44s | Bookmark this page (Ctrl+D) button
+  44s | VPN button 1 of 5
+  44s | Bookmarks tool bar
+  44s | TV button subMenu 1 of 8
+  44s | JCON Workshops — accessible document
+  44s | visited link Register
+  44s | JCON Workshops — accessible document
+  44s | main landmark
+  44s | Filter sessions edit has auto complete e.g. accessible, Spring Al, Rivera blank
+  44s | Filter button
+  44s | JCON Workshops — accessible
+  44s | banner landmark heading level 1 JCON Workshops
+  44s | main landmark clickable Filter sessions
+  44s | edit has auto complete RIVERA
+  44s | button Filter
+  44s | visited link Clear filter
+  44s | table with 2 rows and 5 columns caption
+  44s | row 1 column 1 Title
+  44s | column 2 Speaker
+  44s | column 3 Time
+  44s | column 4 Format
+  44s | main landmark
+  44s | JCON workshop sessions out of caption
+  44s | Filter sessions edit has auto complete RIVERA
+  44s | Filter button
+  44s | Clear filter visited link
+  46s | JCON workshop sessions table with 2 rows and 5 columns row 2 Action column 5 Register for Building
+  46s | Accessible Forms in Java visited link
+  56s | Register — Building Accessible Forms in Java
+  56s | banner landmark breadcrumb navigation landmark visited link e— Back to sessions
+  56s | heading level 1 Register. Building Accessible Forms in Java
+  61s | main landmark
+  61s | Full name edit has auto complete blank
+  69s | D
+  73s | Email address edit has auto complete blank
+  76s | visited link Register
+  76s | JCON Workshops — accessible
+  76s | main landmark
+  76s | document
+  76s | Filter sessions edit has auto complete e.g. accessible, Spring Al, Rivera blank
+  76s | Filter button
+  76s | JCON Workshops — accessible
+  76s | banner landmark heading level 1 JCON Workshops
+  76s | main landmark clickable Filter sessions
+  76s | edit has auto complete RIVERA
+  76s | button Filter
+  76s | visited link Clear filter
+  76s | table with 2 rows and 5 columns caption
+  76s | row 1 column 1 Title
+  76s | column 2 Speaker
+  76s | column 3 Time
+  76s | column 4 Format
+  76s | main landmark
+  76s | JCON workshop sessions out of caption
+  76s | Filter sessions edit has auto complete RIVERA
+  76s | Filter button
+  76s | Clear filter visited link
+  76s | JCON workshop sessions table with 2 rows and 5 columns row 2 Action column 5 Register for Building
+  76s | Accessible Forms in Java visited link
+  76s | Register — Building Accessible Forms in Java
+  76s | banner landmark breadcrumb navigation landmark visited link e— Back to sessions
+  76s | heading level 1 Register. Building Accessible Forms in Java
+  76s | main landmark
+  76s | Full name edit has auto complete blank
+  76s | D
+  76s | Email address edit has auto complete blank
+  76s | invalid entry
+  77s | space
+  78s | D
+  80s | banner landmark Register. Building Accessible Forms in Java heading level 1
+  80s | alert There's a problem with your registration. Please fix the highlighted fields below.
+  91s | main landmark
+  91s | Full name edit has auto complete selected JORDAN
+  95s | banner landmark
+  95s | heading level 1 JCON Workshops
+  95s | main landmark clickable Filter sessions
+  95s | edit has auto complete RIVERA
+  95s | button Filter
+  95s | visited link Clear filter
+  95s | table with 2 rows and 5 columns caption
+  95s | row 1 column 1 Title
+  95s | column 2 Speaker
+  95s | column 3 Time
+  95s | column 4 Format
+  95s | main landmark
+  95s | JCON workshop sessions out of caption
+  95s | Filter sessions edit has auto complete RIVERA
+  95s | Filter button
+  95s | Clear filter visited link
+  95s | JCON workshop sessions table with 2 rows and 5 columns row 2 Action column 5 Register for Building
+  95s | Accessible Forms in Java visited link
+  95s | Register — Building Accessible Forms in Java
+  95s | banner landmark breadcrumb navigation landmark visited link e— Back to sessions
+  95s | heading level 1 Register. Building Accessible Forms in Java
+  95s | main landmark
+  95s | Full name edit has auto complete blank
+  95s | D
+  95s | Email address edit has auto complete blank
+  95s | invalid entry
+  95s | space
+  95s | D
+  95s | banner landmark Register. Building Accessible Forms in Java heading level 1
+  95s | alert There's a problem with your registration. Please fix the highlighted fields below.
+  95s | main landmark
+  95s | Full name edit has auto complete selected JORDAN
+  95s | Email address edit invalid entry has auto complete Enter a valid email address. selected MAL FORMED
+ 102s | selection removed
+ 103s | column 2
+ 103s | column 3
+ 103s | column 4
+ 103s | Speaker
+ 103s | Time
+ 103s | Format
+ 103s | main landmark
+ 103s | Filter sessions edit has auto complete RIVERA
+ 103s | Filter button
+ 103s | Clear filter visited link
+ 103s | JCON workshop sessions table with 2 rows and 5 columns row 2 Action column 5 Register for Building
+ 103s | Accessible Forms in Java visited link
+ 103s | Register — Building Accessible Forms in Java
+ 103s | banner landmark breadcrumb navigation landmark visited link e— Back to sessions
+ 103s | heading level 1 Register. Building Accessible Forms in Java
+ 103s | main landmark
+ 103s | Full name edit has auto complete blank
+ 103s | D
+ 103s | Email address edit has auto complete blank
+ 103s | invalid entry
+ 103s | space
+ 103s | D
+ 103s | banner landmark Register. Building Accessible Forms in Java heading level 1
+ 103s | alert There's a problem with your registration. Please fix the highlighted fields below.
+ 103s | main landmark
+ 103s | Full name edit has auto complete selected JORDAN
+ 103s | Email address edit invalid entry has auto complete Enter a valid email address. selected MAL FORMED
+ 103s | selection removed
+ 103s | D
+ 104s | at
+ 108s | banner landmark
+ 108s | heading level 1
+ 108s | main landmark
+ 108s | breadcrumb navigation landmark visited link
+ 108s | Register: Building Accessible Forms in Java
+ 108s | e— Back to sessions
+ 108s | Full name edit has auto complete blank
+ 108s | D
+ 108s | Email address edit has auto complete blank
+ 108s | invalid entry
+ 108s | space
+ 108s | D
+ 108s | banner landmark Register. Building Accessible Forms in Java heading level 1
+ 108s | alert There's a problem with your registration. Please fix the highlighted fields below.
+ 108s | main landmark
+ 108s | Full name edit has auto complete selected JORDAN
+ 108s | Email address edit invalid entry has auto complete Enter a valid email address. selected MAL FORMED
+ 108s | selection removed
+ 108s | D
+ 108s | at
+ 108s | dot
+ 108s | c
+ 109s | main landmark
+ 109s | Full name edit has auto complete blank
+ 109s | D
+ 109s | Email address edit has auto complete blank
+ 109s | invalid entry
+ 109s | space
+ 109s | D
+ 109s | banner landmark Register. Building Accessible Forms in Java heading level 1
+ 109s | alert There's a problem with your registration. Please fix the highlighted fields below.
+ 109s | main landmark
+ 109s | Full name edit has auto complete selected JORDAN
+ 109s | Email address edit invalid entry has auto complete Enter a valid email address. selected MAL FORMED
+ 109s | selection removed
+ 109s | D
+ 109s | at
+ 109s | dot
+ 109s | c
+ 110s | Meal preference combo box Choose one...
+ 110s | collapsed invalid entry Choose a meal preference.
+ 117s | Full name edit has auto complete blank
+ 117s | D
+ 117s | Email address edit has auto complete blank
+ 117s | invalid entry
+ 117s | space
+ 117s | D
+ 117s | banner landmark Register. Building Accessible Forms in Java heading level 1
+ 117s | alert There's a problem with your registration. Please fix the highlighted fields below.
+ 117s | main landmark
+ 117s | Full name edit has auto complete selected JORDAN
+ 117s | Email address edit invalid entry has auto complete Enter a valid email address. selected MAL FORMED
+ 117s | selection removed
+ 117s | D
+ 117s | at
+ 117s | dot
+ 117s | c
+ 117s | Meal preference combo box Choose one...
+ 117s | Standard
+ 117s | collapsed invalid entry Choose a meal preference.
+ 119s | D
+ 119s | Email address edit has auto complete blank
+ 119s | invalid entry
+ 119s | space
+ 119s | D
+ 119s | banner landmark Register. Building Accessible Forms in Java heading level 1
+ 119s | alert There's a problem with your registration. Please fix the highlighted fields below.
+ 119s | main landmark
+ 119s | Full name edit has auto complete selected JORDAN
+ 119s | Email address edit invalid entry has auto complete Enter a valid email address. selected MAL FORMED
+ 119s | selection removed
+ 119s | D
+ 119s | at
+ 119s | dot
+ 119s | c
+ 119s | Meal preference combo box Choose one...
+ 119s | Standard
+ 119s | Vegetarian
+ 119s | collapsed invalid entry Choose a meal preference.
+ 120s | D
+ 120s | Email address edit has auto complete blank
+ 120s | invalid entry
+ 120s | space
+ 120s | D
+ 120s | banner landmark Register. Building Accessible Forms in Java heading level 1
+ 120s | alert There's a problem with your registration. Please fix the highlighted fields below.
+ 120s | main landmark
+ 120s | Full name edit has auto complete selected JORDAN
+ 120s | Email address edit invalid entry has auto complete Enter a valid email address. selected MAL FORMED
+ 120s | selection removed
+ 120s | D
+ 120s | at
+ 120s | dot
+ 120s | c
+ 120s | Meal preference combo box Choose one...
+ 120s | Standard
+ 120s | Vegetarian
+ 120s | Vegan
+ 120s | collapsed invalid entry Choose a meal preference.
+ 123s | I accept the workshop terms and conditions check box not checked invalid entry
+ 123s | register.
+ 123s | You must accept the terms to
+ 130s | Email address edit has auto complete blank
+ 130s | invalid entry
+ 130s | space
+ 130s | D
+ 130s | banner landmark Register. Building Accessible Forms in Java heading level 1
+ 130s | alert There's a problem with your registration. Please fix the highlighted fields below.
+ 130s | main landmark
+ 130s | Full name edit has auto complete selected JORDAN
+ 130s | Email address edit invalid entry has auto complete Enter a valid email address. selected MAL FORMED
+ 130s | selection removed
+ 130s | D
+ 130s | at
+ 130s | dot
+ 130s | c
+ 130s | Meal preference combo box Choose one...
+ 130s | Standard
+ 130s | Vegetarian
+ 130s | Vegan
+ 130s | collapsed invalid entry Choose a meal preference.
+ 130s | I accept the workshop terms and conditions check box not checked invalid entry
+ 130s | register.
+ 130s | checked
+ 130s | You must accept the terms to
+ 131s | Email address edit has auto complete blank
+ 131s | invalid entry
+ 131s | space
+ 131s | D
+ 131s | banner landmark Register. Building Accessible Forms in Java heading level 1
+ 131s | alert There's a problem with your registration. Please fix the highlighted fields below.
+ 131s | main landmark
+ 131s | Full name edit has auto complete selected JORDAN
+ 131s | Email address edit invalid entry has auto complete Enter a valid email address. selected MAL FORMED
+ 131s | selection removed
+ 131s | D
+ 131s | at
+ 131s | dot
+ 131s | c
+ 131s | Meal preference combo box Choose one...
+ 131s | Standard
+ 131s | Vegetarian
+ 131s | Vegan
+ 131s | collapsed invalid entry Choose a meal preference.
+ 131s | I accept the workshop terms and conditions check box not checked invalid entry
+ 131s | register.
+ 131s | checked
+ 131s | Complete registration button
+ 131s | You must accept the terms to
+ 133s | Email address edit has auto complete blank
+ 133s | invalid entry
+ 133s | space
+ 133s | D
+ 133s | banner landmark Register. Building Accessible Forms in Java heading level 1
+ 133s | alert There's a problem with your registration. Please fix the highlighted fields below.
+ 133s | main landmark
+ 133s | Full name edit has auto complete selected JORDAN
+ 133s | Email address edit invalid entry has auto complete Enter a valid email address. selected MAL FORMED
+ 133s | selection removed
+ 133s | D
+ 133s | at
+ 133s | dot
+ 133s | c
+ 133s | Meal preference combo box Choose one...
+ 133s | Standard
+ 133s | Vegetarian
+ 133s | Vegan
+ 133s | collapsed invalid entry Choose a meal preference.
+ 133s | I accept the workshop terms and conditions check box not checked invalid entry
+ 133s | You must accept the terms to
+ 133s | register.
+ 133s | checked
+ 133s | Complete registration button
+ 133s | main landmark You're registered! heading
+ 133s | level 1
+ 136s | invalid entry
+ 136s | space
+ 136s | D
+ 136s | banner landmark
+ 136s | Register. Building Accessible Forms in Java heading level 1
+ 136s | alert There's a problem with your registration. Please fix the highlighted fields below.
+ 136s | main landmark
+ 136s | Full name edit has auto complete selected JORDAN
+ 136s | Email address edit invalid entry has auto complete Enter a valid email address. selected MAL FORMED
+ 136s | selection removed
+ 136s | D
+ 136s | at
+ 136s | dot
+ 136s | c
+ 136s | Meal preference combo box Choose one...
+ 136s | Standard
+ 136s | Vegetarian
+ 136s | Vegan
+ 136s | collapsed invalid entry Choose a meal preference.
+ 136s | I accept the workshop terms and conditions check box not checked invalid entry
+ 136s | register.
+ 136s | checked
+ 136s | Complete registration button
+ 136s | main landmark You're registered! heading level 1
+ 136s | You must accept the terms to
+ 136s | banner landmark breadcrumb navigation landmark Back to sessions visited link
+ 143s | space
+ 143s | D
+ 143s | banner landmark Register. Building Accessible Forms in Java heading level 1
+ 143s | alert There's a problem with your registration. Please fix the highlighted fields below.
+ 143s | main landmark
+ 143s | Full name edit has auto complete selected JORDAN
+ 143s | Email address edit invalid entry has auto complete Enter a valid email address. selected MAL FORMED
+ 143s | selection removed
+ 143s | D
+ 143s | at
+ 143s | dot
+ 143s | c
+ 143s | Meal preference combo box Choose one...
+ 143s | Standard
+ 143s | Vegetarian
+ 143s | Vegan
+ 143s | collapsed invalid entry Choose a meal preference.
+ 143s | I accept the workshop terms and conditions check box not checked invalid entry
+ 143s | register.
+ 143s | checked
+ 143s | Complete registration button
+ 143s | main landmark You're registered! heading level 1
+ 143s | You must accept the terms to
+ 143s | banner landmark breadcrumb navigation landmark e— Back to sessions visited link
+ 143s | Browser tabs tool bar
+ 143s | tab control
+ 143s | Registration confirmed tab selected 1 of 1 level 1
+ 145s | Open a new tab (Ctrl+T) button 2 of 2
+ 145s | Navigation tool bar
+ 145s | Sidebars button Show sidebar (Alt+Ctrl+Z) 1 of 4
+ 145s | Pick a Search Engine button collapsed subMenu Google, pick a search engine
+ 146s | Search with Google or enter address combo box collapsed has auto complete editable selected
+ 146s | http://localhost:8080/accessible/register/accessible-forms
+ 146s | Bookmark this page (Ctrl+D) button
+ 147s | main landmark
+ 147s | Full name edit has auto complete selected JORDAN
+ 147s | Email address edit invalid entry has auto complete
+ 147s | Enter a valid email address. selected MAL FORMED
+ 147s | selection removed
+ 147s | D
+ 147s | at
+ 147s | dot
+ 147s | c
+ 147s | Meal preference combo box Choose one...
+ 147s | Standard
+ 147s | Vegetarian
+ 147s | Vegan
+ 147s | collapsed invalid entry Choose a meal preference.
+ 147s | I accept the workshop terms and conditions check box not checked invalid entry
+ 147s | register.
+ 147s | checked
+ 147s | Complete registration button
+ 147s | main landmark You're registered! heading level 1
+ 147s | You must accept the terms to
+ 147s | banner landmark breadcrumb navigation landmark e— Back to sessions visited link
+ 147s | Browser tabs tool bar
+ 147s | tab control
+ 147s | Registration confirmed tab selected 1 of 1 level 1
+ 147s | Open a new tab (Ctrl+T) button 2 of 2
+ 147s | Navigation tool bar
+ 147s | Sidebars button Show sidebar (Alt+Ctrl+Z) 1 of 4
+ 147s | Pick a Search Engine button collapsed subMenu Google, pick a search engine
+ 147s | Search with Google or enter address combo box collapsed has auto complete editable selected
+ 147s | http://localhost:8080/accessible/register/accessible-forms
+ 147s | Bookmark this page (Ctrl+D) button
+ 147s | VPN button 1 of 5
+ 147s | Bookmarks tool bar
+ 147s | TV button subMenu 1 of 8
+ 148s | Email address edit
+ 148s | selection removed
+ 148s | D
+ 148s | at
+ 148s | dot
+ 148s | c
+ 148s | invalid entry
+ 148s | has auto complete Enter a valid email address. selected MAL FORMED
+ 148s | Meal preference combo box Choose one...
+ 148s | Standard
+ 148s | Vegetarian
+ 148s | Vegan
+ 148s | collapsed invalid entry Choose a meal preference.
+ 148s | I accept the workshop terms and conditions check box not checked invalid entry
+ 148s | register.
+ 148s | checked
+ 148s | Complete registration button
+ 148s | main landmark You're registered! heading level 1
+ 148s | You must accept the terms to
+ 148s | banner landmark breadcrumb navigation landmark e— Back to sessions visited link
+ 148s | Browser tabs tool bar
+ 148s | tab control
+ 148s | Registration confirmed tab selected 1 of 1 level 1
+ 148s | Open a new tab (Ctrl+T) button 2 of 2
+ 148s | Navigation tool bar
+ 148s | Sidebars button Show sidebar (Alt+Ctrl+Z) 1 of 4
+ 148s | Pick a Search Engine button collapsed subMenu Google, pick a search engine
+ 148s | Search with Google or enter address combo box collapsed has auto complete editable selected
+ 148s | http://localhost:8080/accessible/register/accessible-forms
+ 148s | Bookmark this page (Ctrl+D) button
+ 148s | VPN button 1 of 5
+ 148s | Bookmarks tool bar
+ 148s | TV button subMenu 1 of 8
+ 148s | Registration confirmed document
+ 148s | visited link e- Back to sessions
+ 150s | D
+ 150s | at
+ 150s | dot
+ 150s | c
+ 150s | Meal preference combo box Choose one...
+ 150s | Standard
+ 150s | Vegetarian
+ 150s | Vegan
+ 150s | collapsed invalid entry Choose a meal preference.
+ 150s | I accept the workshop terms and conditions check box not checked invalid entry
+ 150s | register.
+ 150s | checked
+ 150s | Complete registration button
+ 150s | main landmark You're registered! heading level 1
+ 150s | You must accept the terms to
+ 150s | banner landmark breadcrumb navigation landmark e— Back to sessions visited link
+ 150s | Browser tabs tool bar
+ 150s | tab control
+ 150s | Registration confirmed tab selected 1 of 1 level 1
+ 150s | Open a new tab (Ctrl+T) button 2 of 2
+ 150s | Navigation tool bar
+ 150s | Sidebars button Show sidebar (Alt+Ctrl+Z) 1 of 4
+ 150s | Pick a Search Engine button collapsed subMenu Google, pick a search engine
+ 150s | Search with Google or enter address combo box collapsed has auto complete editable selected
+ 150s | http://localhost:8080/accessible/register/accessible-forms
+ 150s | Bookmark this page (Ctrl+D) button
+ 150s | VPN button 1 of 5
+ 150s | Bookmarks tool bar
+ 150s | TV button subMenu 1 of 8
+ 150s | Registration confirmed document
+ 150s | visited link e- Back to sessions
+ 150s | Browser tabs tool bar
+ 150s | tab control
+ 150s | Registration confirmed tab selected 1 of 1 level 1
+ 152s | Open a new tab (Ctrl+T) button 2 of 2
+ 153s | Thanks, JORDAN. Your registration for Building Accessible Forms in Java is confirmed.
+ 153s | Your confirmation code:
+ 153s | Thanks, JORDAN. Your registration for Building Accessible Forms in Java is confirmed.
+ 153s | You're registered!
+ 155s | Thanks, JORDAN. Your registration for Building Accessible Forms in Java is confirmed.
+ 160s | Your confirmation code:
+ 163s | JCON-C7ED97
+ 167s | Thanks, JORDAN. Your registration for Building Accessible Forms in Java is confirmed.
+ 167s | Show more bookmarks
+ 167s | Other Bookmarks
+ 167s | Bookmarks
+ 167s | Account
+ 167s | Extensions
+ 167s | DesktopWindowXamlSource
